@@ -1,0 +1,16 @@
+//
+//  PrefixHeader.pch
+//  SpinTheBoxes
+//
+//  Created by vaskov on 08.05.15.
+//  Copyright (c) 2015 vaskov. All rights reserved.
+//
+
+#ifndef SpinBoxes_PrefixHeader_pch
+#define SpinBoxes_PrefixHeader_pch
+
+#import "UIView+Helpers.h"
+
+#endif
+
+#define RATIO (3.0f/4.0f)

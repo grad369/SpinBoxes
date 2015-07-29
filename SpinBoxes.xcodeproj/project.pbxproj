@@ -1,0 +1,470 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		920358D11AFFD30B00B04710 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 920358D01AFFD30B00B04710 /* main.m */; };
+		920358D41AFFD30B00B04710 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 920358D31AFFD30B00B04710 /* AppDelegate.m */; };
+		920358DA1AFFD30B00B04710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920358D81AFFD30B00B04710 /* Main.storyboard */; };
+		920358DC1AFFD30B00B04710 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 920358DB1AFFD30B00B04710 /* Images.xcassets */; };
+		920358DF1AFFD30B00B04710 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 920358DD1AFFD30B00B04710 /* LaunchScreen.xib */; };
+		920358FA1AFFD3B100B04710 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920358F91AFFD3B100B04710 /* ViewController.m */; };
+		920358FF1AFFD3C000B04710 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 920358FE1AFFD3C000B04710 /* UIView+Helpers.m */; };
+		920359021AFFD3DD00B04710 /* SpinTheBoxesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 920359011AFFD3DD00B04710 /* SpinTheBoxesView.m */; };
+		920359161B0092A500B04710 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 920359151B0092A500B04710 /* BoxView.m */; };
+		920359231B0101F800B04710 /* MTKObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203591A1B0101F800B04710 /* MTKObserver.m */; };
+		920359241B0101F800B04710 /* NSObject+MTKObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203591E1B0101F800B04710 /* NSObject+MTKObserving.m */; };
+		9203592C1B0163D300B04710 /* TapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203592B1B0163D300B04710 /* TapView.m */; };
+		9277578A1B66D70600BA6A4F /* ComputatingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 927757891B66D70600BA6A4F /* ComputatingManager.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		920358CB1AFFD30B00B04710 /* SpinBoxes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpinBoxes.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		920358CF1AFFD30B00B04710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		920358D01AFFD30B00B04710 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		920358D21AFFD30B00B04710 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		920358D31AFFD30B00B04710 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		920358D91AFFD30B00B04710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		920358DB1AFFD30B00B04710 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		920358DE1AFFD30B00B04710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		920358E91AFFD30B00B04710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		920358EA1AFFD30B00B04710 /* SpinBoxesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpinBoxesTests.m; sourceTree = "<group>"; };
+		920358F81AFFD3B100B04710 /* ViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		920358F91AFFD3B100B04710 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		920358FD1AFFD3C000B04710 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
+		920358FE1AFFD3C000B04710 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
+		920359001AFFD3DD00B04710 /* SpinTheBoxesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinTheBoxesView.h; sourceTree = "<group>"; };
+		920359011AFFD3DD00B04710 /* SpinTheBoxesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SpinTheBoxesView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
+		9203590E1AFFDBE300B04710 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		920359141B0092A500B04710 /* BoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
+		920359151B0092A500B04710 /* BoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
+		920359191B0101F800B04710 /* MTKObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKObserver.h; sourceTree = "<group>"; };
+		9203591A1B0101F800B04710 /* MTKObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTKObserver.m; sourceTree = "<group>"; };
+		9203591B1B0101F800B04710 /* MTKObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKObserving.h; sourceTree = "<group>"; };
+		9203591C1B0101F800B04710 /* MTKObservingMacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKObservingMacros.h; sourceTree = "<group>"; };
+		9203591D1B0101F800B04710 /* NSObject+MTKObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSObject+MTKObserving.h"; sourceTree = "<group>"; };
+		9203591E1B0101F800B04710 /* NSObject+MTKObserving.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSObject+MTKObserving.m"; sourceTree = "<group>"; };
+		920359201B0101F800B04710 /* keypath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keypath.h; sourceTree = "<group>"; };
+		920359211B0101F800B04710 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
+		920359221B0101F800B04710 /* scope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scope.h; sourceTree = "<group>"; };
+		9203592A1B0163D300B04710 /* TapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapView.h; sourceTree = "<group>"; };
+		9203592B1B0163D300B04710 /* TapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapView.m; sourceTree = "<group>"; };
+		927757881B66D70600BA6A4F /* ComputatingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputatingManager.h; sourceTree = "<group>"; };
+		927757891B66D70600BA6A4F /* ComputatingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputatingManager.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		920358C81AFFD30B00B04710 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		920358C21AFFD30B00B04710 = {
+			isa = PBXGroup;
+			children = (
+				920358CD1AFFD30B00B04710 /* SpinBoxes */,
+				920358E71AFFD30B00B04710 /* SpinBoxesTests */,
+				920358CC1AFFD30B00B04710 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		920358CC1AFFD30B00B04710 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				920358CB1AFFD30B00B04710 /* SpinBoxes.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		920358CD1AFFD30B00B04710 /* SpinBoxes */ = {
+			isa = PBXGroup;
+			children = (
+				920358D21AFFD30B00B04710 /* AppDelegate.h */,
+				920358D31AFFD30B00B04710 /* AppDelegate.m */,
+				920358D81AFFD30B00B04710 /* Main.storyboard */,
+				920358F41AFFD3B100B04710 /* Screens */,
+				92EF39C01B081AEE00DC70BA /* Managers */,
+				920358FB1AFFD3C000B04710 /* Vendors */,
+				920358DB1AFFD30B00B04710 /* Images.xcassets */,
+				920358DD1AFFD30B00B04710 /* LaunchScreen.xib */,
+				920358CE1AFFD30B00B04710 /* Supporting Files */,
+			);
+			path = SpinBoxes;
+			sourceTree = "<group>";
+		};
+		920358CE1AFFD30B00B04710 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				9203590E1AFFDBE300B04710 /* PrefixHeader.pch */,
+				920358CF1AFFD30B00B04710 /* Info.plist */,
+				920358D01AFFD30B00B04710 /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		920358E71AFFD30B00B04710 /* SpinBoxesTests */ = {
+			isa = PBXGroup;
+			children = (
+				920358EA1AFFD30B00B04710 /* SpinBoxesTests.m */,
+				920358E81AFFD30B00B04710 /* Supporting Files */,
+			);
+			path = SpinBoxesTests;
+			sourceTree = "<group>";
+		};
+		920358E81AFFD30B00B04710 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				920358E91AFFD30B00B04710 /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		920358F41AFFD3B100B04710 /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				920358F51AFFD3B100B04710 /* ViewController */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		920358F51AFFD3B100B04710 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				920358F61AFFD3B100B04710 /* SpinTheBoxesView */,
+				920358F81AFFD3B100B04710 /* ViewController.h */,
+				920358F91AFFD3B100B04710 /* ViewController.m */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		920358F61AFFD3B100B04710 /* SpinTheBoxesView */ = {
+			isa = PBXGroup;
+			children = (
+				920359291B0163D300B04710 /* TapView */,
+				920359131B0092A500B04710 /* BoxView */,
+				920359001AFFD3DD00B04710 /* SpinTheBoxesView.h */,
+				920359011AFFD3DD00B04710 /* SpinTheBoxesView.m */,
+			);
+			path = SpinTheBoxesView;
+			sourceTree = "<group>";
+		};
+		920358FB1AFFD3C000B04710 /* Vendors */ = {
+			isa = PBXGroup;
+			children = (
+				920359181B0101F800B04710 /* block-kvo */,
+				920358FC1AFFD3C000B04710 /* UIView+Helpers */,
+			);
+			path = Vendors;
+			sourceTree = "<group>";
+		};
+		920358FC1AFFD3C000B04710 /* UIView+Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				920358FD1AFFD3C000B04710 /* UIView+Helpers.h */,
+				920358FE1AFFD3C000B04710 /* UIView+Helpers.m */,
+			);
+			path = "UIView+Helpers";
+			sourceTree = "<group>";
+		};
+		920359131B0092A500B04710 /* BoxView */ = {
+			isa = PBXGroup;
+			children = (
+				920359141B0092A500B04710 /* BoxView.h */,
+				920359151B0092A500B04710 /* BoxView.m */,
+			);
+			path = BoxView;
+			sourceTree = "<group>";
+		};
+		920359181B0101F800B04710 /* block-kvo */ = {
+			isa = PBXGroup;
+			children = (
+				920359191B0101F800B04710 /* MTKObserver.h */,
+				9203591A1B0101F800B04710 /* MTKObserver.m */,
+				9203591B1B0101F800B04710 /* MTKObserving.h */,
+				9203591C1B0101F800B04710 /* MTKObservingMacros.h */,
+				9203591D1B0101F800B04710 /* NSObject+MTKObserving.h */,
+				9203591E1B0101F800B04710 /* NSObject+MTKObserving.m */,
+				9203591F1B0101F800B04710 /* Utilities */,
+			);
+			path = "block-kvo";
+			sourceTree = "<group>";
+		};
+		9203591F1B0101F800B04710 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				920359201B0101F800B04710 /* keypath.h */,
+				920359211B0101F800B04710 /* metamacros.h */,
+				920359221B0101F800B04710 /* scope.h */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		920359291B0163D300B04710 /* TapView */ = {
+			isa = PBXGroup;
+			children = (
+				9203592A1B0163D300B04710 /* TapView.h */,
+				9203592B1B0163D300B04710 /* TapView.m */,
+			);
+			path = TapView;
+			sourceTree = "<group>";
+		};
+		927757871B66D70600BA6A4F /* ComputatingManager */ = {
+			isa = PBXGroup;
+			children = (
+				927757881B66D70600BA6A4F /* ComputatingManager.h */,
+				927757891B66D70600BA6A4F /* ComputatingManager.m */,
+			);
+			path = ComputatingManager;
+			sourceTree = "<group>";
+		};
+		92EF39C01B081AEE00DC70BA /* Managers */ = {
+			isa = PBXGroup;
+			children = (
+				927757871B66D70600BA6A4F /* ComputatingManager */,
+			);
+			path = Managers;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		920358CA1AFFD30B00B04710 /* SpinBoxes */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 920358EE1AFFD30B00B04710 /* Build configuration list for PBXNativeTarget "SpinBoxes" */;
+			buildPhases = (
+				920358C71AFFD30B00B04710 /* Sources */,
+				920358C81AFFD30B00B04710 /* Frameworks */,
+				920358C91AFFD30B00B04710 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = SpinBoxes;
+			productName = SpinBoxes;
+			productReference = 920358CB1AFFD30B00B04710 /* SpinBoxes.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		920358C31AFFD30B00B04710 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0630;
+				ORGANIZATIONNAME = vaskov;
+				TargetAttributes = {
+					920358CA1AFFD30B00B04710 = {
+						CreatedOnToolsVersion = 6.3.1;
+					};
+				};
+			};
+			buildConfigurationList = 920358C61AFFD30B00B04710 /* Build configuration list for PBXProject "SpinBoxes" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 920358C21AFFD30B00B04710;
+			productRefGroup = 920358CC1AFFD30B00B04710 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				920358CA1AFFD30B00B04710 /* SpinBoxes */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		920358C91AFFD30B00B04710 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				920358DA1AFFD30B00B04710 /* Main.storyboard in Resources */,
+				920358DF1AFFD30B00B04710 /* LaunchScreen.xib in Resources */,
+				920358DC1AFFD30B00B04710 /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		920358C71AFFD30B00B04710 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				920359161B0092A500B04710 /* BoxView.m in Sources */,
+				9277578A1B66D70600BA6A4F /* ComputatingManager.m in Sources */,
+				920359241B0101F800B04710 /* NSObject+MTKObserving.m in Sources */,
+				920358FA1AFFD3B100B04710 /* ViewController.m in Sources */,
+				920359021AFFD3DD00B04710 /* SpinTheBoxesView.m in Sources */,
+				920358D41AFFD30B00B04710 /* AppDelegate.m in Sources */,
+				920359231B0101F800B04710 /* MTKObserver.m in Sources */,
+				9203592C1B0163D300B04710 /* TapView.m in Sources */,
+				920358FF1AFFD3C000B04710 /* UIView+Helpers.m in Sources */,
+				920358D11AFFD30B00B04710 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		920358D81AFFD30B00B04710 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				920358D91AFFD30B00B04710 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		920358DD1AFFD30B00B04710 /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				920358DE1AFFD30B00B04710 /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		920358EC1AFFD30B00B04710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		920358ED1AFFD30B00B04710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		920358EF1AFFD30B00B04710 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpinBoxes/PrefixHeader.pch;
+				INFOPLIST_FILE = SpinBoxes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		920358F01AFFD30B00B04710 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = SpinBoxes/PrefixHeader.pch;
+				INFOPLIST_FILE = SpinBoxes/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		920358C61AFFD30B00B04710 /* Build configuration list for PBXProject "SpinBoxes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				920358EC1AFFD30B00B04710 /* Debug */,
+				920358ED1AFFD30B00B04710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		920358EE1AFFD30B00B04710 /* Build configuration list for PBXNativeTarget "SpinBoxes" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				920358EF1AFFD30B00B04710 /* Debug */,
+				920358F01AFFD30B00B04710 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 920358C31AFFD30B00B04710 /* Project object */;
+}
