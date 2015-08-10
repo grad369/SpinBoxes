@@ -15,15 +15,15 @@ extern NSString const *BoxViewChangeAlphaNotification;
 @interface BoxView : UIView
 @property (nonatomic, copy) NSString *titleText;
 @property (nonatomic, assign) CGFloat startAngle;
-@property (nonatomic, assign) CGFloat currentAngle;
-//@property (nonatomic, assign) BOOL activeBox;
+@property (nonatomic, assign) BOOL activeBoxView;
+
 @property (nonatomic, assign) id<BoxViewDelegate> delegate;
 
-//@property (nonatomic, weak) UIDynamicAnimator *animator;
 @property (nonatomic, strong) UIAttachmentBehavior *attachmentBehavior;
 @end
 
 
 @protocol BoxViewDelegate <NSObject>
 - (void)boxView:(BoxView *)view swipeWithVelocity:(CGPoint)velocity;
+- (void)tapOnBoxView:(BoxView *)view;
 @end

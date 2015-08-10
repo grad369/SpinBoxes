@@ -21,6 +21,11 @@
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="backgroundColor" red="1" green="0.1893264435" blue="0.20185258880000001" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
+                                    <view contentMode="scaleToFill" id="hGb-E5-Apa" customClass="DynamicItem">
+                                        <rect key="frame" x="158" y="212" width="82" height="95"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
                                     <view contentMode="scaleToFill" id="Ibm-8W-sKI" customClass="BoxView">
                                         <rect key="frame" x="227" y="109" width="82" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -161,6 +166,7 @@
                                 <color key="backgroundColor" red="0.65098039220000004" green="0.91764705879999997" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <connections>
                                     <outlet property="centerBoxView" destination="Jrb-nu-fnd" id="vcM-pF-PCL"/>
+                                    <outlet property="dynamicItem" destination="hGb-E5-Apa" id="GUR-jm-KBk"/>
                                     <outletCollection property="boxViews" destination="Ibm-8W-sKI" id="luT-8e-8QF"/>
                                     <outletCollection property="boxViews" destination="GYM-1P-gLP" id="Kki-N7-fmK"/>
                                     <outletCollection property="boxViews" destination="s3N-yf-UC2" id="1Pj-0k-KDp"/>

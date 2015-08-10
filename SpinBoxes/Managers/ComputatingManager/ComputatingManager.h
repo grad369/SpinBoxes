@@ -7,7 +7,9 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "SingletonProtocol.h"
 
+#define COMPUTATION_MANAGER [ComputatingManager sharedInstance]
 
 typedef struct
 {
@@ -24,15 +26,15 @@ typedef struct
 }ConfigurationBox;
 
 
-@interface ComputatingManager : NSObject
-+ (ConfigurationBox)setConfigurationWithView:(UIView *)view;
-+ (CGFloat)resetAngle:(CGFloat)angle;
+@interface ComputatingManager : NSObject <SingletonProtocol>
+- (ConfigurationBox)setConfigurationWithView:(UIView *)view;
+- (CGFloat)resetAngle:(CGFloat)angle;
 
-+ (CGPoint)centerBoxViewWithAlpha:(CGFloat)alpha;
-+ (CGFloat)lenghtWithAlpha:(CGFloat)alpha;
-+ (CGFloat)alphaInDegreesForBoxWithCenter:(CGPoint)center;
+- (CGPoint)centerBoxViewWithAlpha:(CGFloat)alpha;
+- (CGFloat)lenghtWithAlpha:(CGFloat)alpha;
+- (CGFloat)alphaInDegreesForBoxWithCenter:(CGPoint)center;
 
-+ (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha;
+- (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha;
 
 @end
 

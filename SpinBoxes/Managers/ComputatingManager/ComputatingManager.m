@@ -16,7 +16,26 @@ static ConfigurationBox staticConfiguration;
 
 @implementation ComputatingManager
 
-+ (ConfigurationBox)setConfigurationWithView:(UIView *)view
++ (instancetype) sharedInstance {
+    static dispatch_once_t pred;
+    static id shared = nil;
+    dispatch_once(&pred, ^{
+        shared = [[super alloc] initUniqueInstance];
+    });
+    return shared;
+}
+
+- (instancetype) initUniqueInstance {
+    self = [super init];
+    if (self)
+    {
+    }
+    return self;
+}
+
+#pragma mark - Publics
+
+- (ConfigurationBox)setConfigurationWithView:(UIView *)view
 {
     CGFloat widthBetweenCells = LENGHT_TO_CELLS_FROM_EDGE, heightBetweenCells = LENGHT_TO_CELLS_FROM_EDGE;
     CGFloat widthBox = (view.width - 2 * widthBetweenCells - 2 * LENGHT_TO_CELLS_FROM_EDGE)/3;
@@ -28,7 +47,7 @@ static ConfigurationBox staticConfiguration;
     }
     else {
         widthBox = heightBox * RATIO;
-        widthBetweenCells = (view.width - 3*widthBox- 2 * LENGHT_TO_CELLS_FROM_EDGE)/2;
+        widthBetweenCells = (view.width - 3 * widthBox- 2 * LENGHT_TO_CELLS_FROM_EDGE)/2;
     }
     
     view.center = view.superview.center;
@@ -48,7 +67,7 @@ static ConfigurationBox staticConfiguration;
     return staticConfiguration;
 }
 
-+ (CGFloat)resetAngle:(CGFloat)angle
+- (CGFloat)resetAngle:(CGFloat)angle
 {
     CGFloat currentAngle = angle;
     
@@ -66,7 +85,7 @@ static ConfigurationBox staticConfiguration;
     return currentAngle;
 }
 
-+ (CGFloat)lenghtWithAlpha:(CGFloat)alpha
+- (CGFloat)lenghtWithAlpha:(CGFloat)alpha
 {
     CGPoint point = [self centerBoxViewWithAlpha:alpha];
     CGPoint center = staticConfiguration.center;
@@ -74,9 +93,9 @@ static ConfigurationBox staticConfiguration;
     return sqrt(pow(point.x - center.x, 2) + pow(point.y - center.y, 2));
 }
 
-+ (CGPoint)centerBoxViewWithAlpha:(CGFloat)alpha
+- (CGPoint)centerBoxViewWithAlpha:(CGFloat)alpha
 {
-    alpha = [ComputatingManager resetAngle:alpha];
+    alpha = [self resetAngle:alpha];
     
     CGFloat centerBoxViewX = -1, centerBoxViewY = -1;
     ConfigurationBox c = staticConfiguration;
@@ -144,7 +163,7 @@ static ConfigurationBox staticConfiguration;
     return CGPointMake(centerBoxViewX, centerBoxViewY);
 }
 
-+ (CGFloat)alphaInDegreesForBoxWithCenter:(CGPoint)center
+- (CGFloat)alphaInDegreesForBoxWithCenter:(CGPoint)center
 {
     ConfigurationBox c = staticConfiguration;
     
@@ -175,7 +194,7 @@ static ConfigurationBox staticConfiguration;
     return RADIANS_TO_DEGREES(radian);
 }
 
-+ (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha
+- (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha
 {
     static CGFloat currentAngle = 0, oldAngle = 0;
     BOOL isClockwise = YES;

@@ -100,11 +100,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpinBoxes/Screens/ViewController/SpinTheBoxesView/SpinTheBoxesView.m"
-            timestampString = "459884207.710459"
+            timestampString = "460899853.739926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "185"
-            endingLineNumber = "185"
+            startingLineNumber = "133"
+            endingLineNumber = "133"
             landmarkName = "-dynamicAnimatorWillResume:"
             landmarkType = "5">
          </BreakpointContent>
@@ -116,11 +116,11 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpinBoxes/Screens/ViewController/SpinTheBoxesView/SpinTheBoxesView.m"
-            timestampString = "459884207.710459"
+            timestampString = "460899853.739926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "192"
-            endingLineNumber = "192"
+            startingLineNumber = "144"
+            endingLineNumber = "144"
             landmarkName = "-dynamicAnimatorDidPause:"
             landmarkType = "5">
          </BreakpointContent>
@@ -132,12 +132,44 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpinBoxes/Screens/ViewController/SpinTheBoxesView/SpinTheBoxesView.m"
-            timestampString = "459884207.710459"
+            timestampString = "460899853.739926"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "128"
-            endingLineNumber = "128"
-            landmarkName = "-boxView:swipeWithVelocity:"
+            startingLineNumber = "123"
+            endingLineNumber = "123"
+            landmarkName = "-tapOnBoxView:"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpinBoxes/Screens/ViewController/SpinTheBoxesView/SpinTheBoxesView.m"
+            timestampString = "460899853.739926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "182"
+            endingLineNumber = "182"
+            landmarkName = "-removeAllDynamicsItems"
+            landmarkType = "5">
+         </BreakpointContent>
+      </BreakpointProxy>
+      <BreakpointProxy
+         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
+         <BreakpointContent
+            shouldBeEnabled = "Yes"
+            ignoreCount = "0"
+            continueAfterRunningActions = "No"
+            filePath = "SpinBoxes/Screens/ViewController/SpinTheBoxesView/SpinTheBoxesView.m"
+            timestampString = "460899853.739926"
+            startingColumnNumber = "9223372036854775807"
+            endingColumnNumber = "9223372036854775807"
+            startingLineNumber = "190"
+            endingLineNumber = "190"
+            landmarkName = "-removeAttachments"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>
@@ -148,44 +180,12 @@
             ignoreCount = "0"
             continueAfterRunningActions = "No"
             filePath = "SpinBoxes/Screens/ViewController/SpinTheBoxesView/SpinTheBoxesView.m"
-            timestampString = "459884207.710459"
+            timestampString = "460897059.048258"
             startingColumnNumber = "9223372036854775807"
             endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "168"
-            endingLineNumber = "168"
+            startingLineNumber = "111"
+            endingLineNumber = "111"
             landmarkName = "-boxView:swipeWithVelocity:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpinBoxes/Screens/ViewController/SpinTheBoxesView/SpinTheBoxesView.m"
-            timestampString = "459884207.710459"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "152"
-            endingLineNumber = "152"
-            landmarkName = "-boxView:swipeWithVelocity:"
-            landmarkType = "5">
-         </BreakpointContent>
-      </BreakpointProxy>
-      <BreakpointProxy
-         BreakpointExtensionID = "Xcode.Breakpoint.FileBreakpoint">
-         <BreakpointContent
-            shouldBeEnabled = "No"
-            ignoreCount = "0"
-            continueAfterRunningActions = "No"
-            filePath = "SpinBoxes/Screens/ViewController/SpinTheBoxesView/SpinTheBoxesView.m"
-            timestampString = "459884302.724179"
-            startingColumnNumber = "9223372036854775807"
-            endingColumnNumber = "9223372036854775807"
-            startingLineNumber = "202"
-            endingLineNumber = "202"
-            landmarkName = "-startPosition"
             landmarkType = "5">
          </BreakpointContent>
       </BreakpointProxy>

@@ -20,6 +20,7 @@
 		920359241B0101F800B04710 /* NSObject+MTKObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203591E1B0101F800B04710 /* NSObject+MTKObserving.m */; };
 		9203592C1B0163D300B04710 /* TapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203592B1B0163D300B04710 /* TapView.m */; };
 		9277578A1B66D70600BA6A4F /* ComputatingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 927757891B66D70600BA6A4F /* ComputatingManager.m */; };
+		92ADBB311B78D88900C4B54D /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB301B78D88900C4B54D /* DynamicItem.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,9 @@
 		9203592B1B0163D300B04710 /* TapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapView.m; sourceTree = "<group>"; };
 		927757881B66D70600BA6A4F /* ComputatingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputatingManager.h; sourceTree = "<group>"; };
 		927757891B66D70600BA6A4F /* ComputatingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputatingManager.m; sourceTree = "<group>"; };
+		9277578B1B6AE4B400BA6A4F /* SingletonProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingletonProtocol.h; sourceTree = "<group>"; };
+		92ADBB2F1B78D88900C4B54D /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicItem.h; sourceTree = "<group>"; };
+		92ADBB301B78D88900C4B54D /* DynamicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicItem.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -150,6 +154,7 @@
 			isa = PBXGroup;
 			children = (
 				920359291B0163D300B04710 /* TapView */,
+				92ADBB2E1B78D86A00C4B54D /* DynamicItem */,
 				920359131B0092A500B04710 /* BoxView */,
 				920359001AFFD3DD00B04710 /* SpinTheBoxesView.h */,
 				920359011AFFD3DD00B04710 /* SpinTheBoxesView.m */,
@@ -220,10 +225,20 @@
 		927757871B66D70600BA6A4F /* ComputatingManager */ = {
 			isa = PBXGroup;
 			children = (
+				9277578B1B6AE4B400BA6A4F /* SingletonProtocol.h */,
 				927757881B66D70600BA6A4F /* ComputatingManager.h */,
 				927757891B66D70600BA6A4F /* ComputatingManager.m */,
 			);
 			path = ComputatingManager;
+			sourceTree = "<group>";
+		};
+		92ADBB2E1B78D86A00C4B54D /* DynamicItem */ = {
+			isa = PBXGroup;
+			children = (
+				92ADBB2F1B78D88900C4B54D /* DynamicItem.h */,
+				92ADBB301B78D88900C4B54D /* DynamicItem.m */,
+			);
+			path = DynamicItem;
 			sourceTree = "<group>";
 		};
 		92EF39C01B081AEE00DC70BA /* Managers */ = {
@@ -310,6 +325,7 @@
 				920358FA1AFFD3B100B04710 /* ViewController.m in Sources */,
 				920359021AFFD3DD00B04710 /* SpinTheBoxesView.m in Sources */,
 				920358D41AFFD30B00B04710 /* AppDelegate.m in Sources */,
+				92ADBB311B78D88900C4B54D /* DynamicItem.m in Sources */,
 				920359231B0101F800B04710 /* MTKObserver.m in Sources */,
 				9203592C1B0163D300B04710 /* TapView.m in Sources */,
 				920358FF1AFFD3C000B04710 /* UIView+Helpers.m in Sources */,

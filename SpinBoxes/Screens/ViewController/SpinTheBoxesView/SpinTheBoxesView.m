@@ -10,9 +10,11 @@
 #import "TapView.h"
 #import "BoxView.h"
 #import "ComputatingManager.h"
+#import "DynamicItem.h"
 
 @interface SpinTheBoxesView() <TapViewDelegate, UIDynamicAnimatorDelegate, BoxViewDelegate>
 @property (nonatomic, strong) IBOutlet UIView *centerBoxView;
+@property (nonatomic, strong) IBOutlet DynamicItem *dynamicItem;
 @property (nonatomic, strong) IBOutletCollection(BoxView) NSArray *boxViews;
 @property (nonatomic, assign) CGFloat startAngle;
 
@@ -107,74 +109,22 @@
 
 - (void)boxView:(BoxView *)view swipeWithVelocity:(CGPoint)velocity
 {
-    [self removeAllDynamicsItems];
-   
-    NSLog(@"=====%@++++++", NSStringFromCGPoint(velocity));
-    //view.activeBox = YES;
     _animationRunning = YES;
+    static NSInteger dd = 0;
+    NSLog(@"++++++%li", ++dd);
     
-    [self setAttachmentBehaviors];
-    
-    UIDynamicItemBehavior *item = [[UIDynamicItemBehavior alloc] initWithItems:@[view]];
-    //__block UIDynamicItemBehavior *item1 = item;
-    
-    
-    [item addLinearVelocity:velocity forItem:view];
-    item.density = 50;
-    item.friction = 50;
-    item.allowsRotation = NO;
-    item.action = ^
-    {
-      //  static UISnapBehavior *snapBehavior = nil;
-        //static BOOL isClockwise = YES, first = YES;
-        //static NSInteger countEnters = 0;
-        
-        if (self.animationRunning) {
-            CGPoint center = CGPointMake(view.centerX, view.centerY);
-            
-//
-            //NSLog(@"-----%@", @(isClockwise));
-            CGFloat currentAngle = [ComputatingManager alphaInDegreesForBoxWithCenter:center];
-            self.angle = [ComputatingManager resetAngle:(currentAngle)];
-//            
-//            CGPoint velocity = [item1 linearVelocityForItem:view];
-//           
-//            
-//            if (ABS(velocity.x) + ABS(velocity.y) < 40 && first)
-//            {
-//                first = NO;
-//                
-//                
-//                    //[_animator removeAllBehaviors];
-            //[_animator removeBehavior:self.dynamicsItems.firstObject];
-            //[_dynamicsItems removeAllObjects];
-            
-            //CGPoint centerNextStopBoxView = [ComputatingManager finishCenterBoxViewWithAlpha:_angle];
-//          snapBehavior = [[UISnapBehavior alloc] initWithItem:view snapToPoint:centerNextStopBoxView];
-//          snapBehavior.damping = 1;
-           // UIGravityBehavior *gravityBehavior = [UIGravityBehavior new];
-            //gravityBehavior.gravityDirection = CGVectorMake(1, 1);
-//                                    //[view.attachmentBehavior addChildBehavior:snapBehavior];
-//                    [_animator addBehavior:snapBehavior];
-                    //[_animator removeBehavior:item1];
-                
-                
-           // }
-            //NSLog(@"-----%@", NSStringFromCGPoint([item1 linearVelocityForItem:view]));
-             //NSLog(@"-----%@", NSStringFromCGPoint(centerNextStopBoxView));
-        }
-        else
-        {
-            //[view.attachmentBehavior removeChildBehavior:snapBehavior];
-           // first = YES;
-        }
-    };
-    
-    [_dynamicsItems addObject:item];
-    [_animator addBehavior:item];
-    
-    //NSLog(@"%@ == %@", obj, _animator);
+    [self removeFromAnimatorView:view];
+    [self addLinearVelocity:velocity view:view];
+}
 
+- (void)tapOnBoxView:(BoxView *)view
+{
+    if (_animationRunning)
+    {
+        CGFloat alpha = [COMPUTATION_MANAGER alphaInDegreesForBoxWithCenter:view.center];
+        //[self removeAllDynamicsItems];
+        self.angle = [COMPUTATION_MANAGER resetAngle:alpha];
+    }
 }
 
 #pragma mark - |UIDynamicAnimatorDelegate|
@@ -188,6 +138,10 @@
 - (void)dynamicAnimatorDidPause:(UIDynamicAnimator*)animator
 {
     _animationRunning = NO;
+    
+    [_boxViews enumerateObjectsUsingBlock:^(BoxView *boxView, NSUInteger idx, BOOL *stop) {
+        boxView.activeBoxView = NO;
+    }];
     NSLog(@"===%@2", animator);
 }
 
@@ -198,10 +152,11 @@
     self.height = self.width = [UIScreen mainScreen].bounds.size.width;
     self.center = self.superview.center;
     
-    ConfigurationBox c = [ComputatingManager setConfigurationWithView:self];
+    ConfigurationBox c = [COMPUTATION_MANAGER setConfigurationWithView:self];
     
     _centerBoxView.size = c.boxSize;
     _centerBoxView.center = c.center;
+    _dynamicItem.size = c.boxSize;
     
     self.angle = 0.0f;
     
@@ -222,27 +177,23 @@
     self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self];
     self.animator.delegate = self;
     self.dynamicsItems = [NSMutableArray new];
-    return;
-    CGPoint attachmentPoint = CGPointMake(self.width/2, self.height/2);
-    
-    for (BoxView *view in _boxViews) {
-        UIAttachmentBehavior *attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:view attachedToAnchor:attachmentPoint];
-        attachmentBehavior.frequency = 10;
-        attachmentBehavior.damping = 2.5;
-        view.attachmentBehavior = attachmentBehavior;
-        [_animator addBehavior:attachmentBehavior];
-    };
+    [self setAttachmentBehaviors];
 }
 
 - (void)removeAllDynamicsItems
 {
-    for (UIDynamicItemBehavior *behavior in _dynamicsItems) {
-        BoxView *view = behavior.items.firstObject;
-        //view.activeBox = NO;
+    for (UIDynamicItemBehavior *behavior in _dynamicsItems)
         [_animator removeBehavior:behavior];
-    }
-    
+        
     [_dynamicsItems removeAllObjects];
+}
+
+- (void)removeAttachments
+{
+    for (BoxView *boxView in _boxViews) {
+        [_animator removeBehavior:boxView.attachmentBehavior];
+        boxView.attachmentBehavior = nil;
+    }
 }
 
 - (void)setAttachmentBehaviors
@@ -260,6 +211,81 @@
         boxView.attachmentBehavior = attachmentBehavior;
         [_animator addBehavior:attachmentBehavior];
     };
+}
+
+- (void)addLinearVelocity:(CGPoint)velocity view:(BoxView *)view
+{
+    view.activeBoxView = YES;
+    
+    UIDynamicItemBehavior *item = [[UIDynamicItemBehavior alloc] initWithItems:@[view]];
+    [item addLinearVelocity:velocity forItem:view];
+    item.density = 500;
+    item.friction = 500;
+    item.action = ^
+    {
+        //  static UISnapBehavior *snapBehavior = nil;
+        //static BOOL isClockwise = YES, first = YES;
+        //static NSInteger countEnters = 0;
+        //return ;
+        if (self.animationRunning) {
+            CGPoint center = CGPointMake(view.centerX, view.centerY);
+            
+            //
+            //NSLog(@"-----");
+            CGFloat currentAngle = [COMPUTATION_MANAGER alphaInDegreesForBoxWithCenter:center];
+            self.angle = [COMPUTATION_MANAGER resetAngle:(currentAngle)];
+            //
+            //            CGPoint velocity = [item1 linearVelocityForItem:view];
+            //
+            //
+            //            if (ABS(velocity.x) + ABS(velocity.y) < 40 && first)
+            //            {
+            //                first = NO;
+            //
+            //
+            //                    //[_animator removeAllBehaviors];
+            //[_animator removeBehavior:self.dynamicsItems.firstObject];
+            //[_dynamicsItems removeAllObjects];
+            
+            //CGPoint centerNextStopBoxView = [COMPUTATION_MANAGER finishCenterBoxViewWithAlpha:_angle];
+            //          snapBehavior = [[UISnapBehavior alloc] initWithItem:view snapToPoint:centerNextStopBoxView];
+            //          snapBehavior.damping = 1;
+            // UIGravityBehavior *gravityBehavior = [UIGravityBehavior new];
+            //gravityBehavior.gravityDirection = CGVectorMake(1, 1);
+            //                                    //[view.attachmentBehavior addChildBehavior:snapBehavior];
+            //                    [_animator addBehavior:snapBehavior];
+            //[_animator removeBehavior:item1];
+            
+            
+            // }
+            //NSLog(@"-----%@", NSStringFromCGPoint([item1 linearVelocityForItem:view]));
+            //NSLog(@"-----%@", NSStringFromCGPoint(centerNextStopBoxView));
+        }
+        else
+        {
+            //[view.attachmentBehavior removeChildBehavior:snapBehavior];
+            // first = YES;
+        }
+    };
+    
+    [_dynamicsItems addObject:item];
+    [_animator addBehavior:item];
+}
+
+- (void)removeFromAnimatorView:(BoxView *)view
+{
+    NSMutableArray *behaviorsForRemoves = [NSMutableArray new];
+    
+    for (UIDynamicItemBehavior *behavior in _dynamicsItems)
+    {
+        if ([behavior.items.lastObject isEqual:view])
+        {
+            [behaviorsForRemoves addObject:behavior];
+            view.activeBoxView = NO;
+        }
+    }
+    
+    [_dynamicsItems removeObjectsInArray:behaviorsForRemoves];
 }
 
 //- (void)changeAngle:(CGFloat)startAngle duration:(CGFloat)duration step:(CGFloat)step clockwise:(BOOL)isClockwise
@@ -281,7 +307,7 @@
 //{
 //    NSInteger index = 0;
 //    
-//    CGFloat currentAngle = [ComputatingManager resetAngle:self.angle];
+//    CGFloat currentAngle = [COMPUTATION_MANAGER resetAngle:self.angle];
 //    
 //    while (currentAngle > 0) {
 //        currentAngle -= 45;
@@ -300,7 +326,7 @@
 //        }
 //    }
 //    
-//    return [ComputatingManager centerBoxViewWithAlpha:[angles[index] floatValue]];
+//    return [COMPUTATION_MANAGER centerBoxViewWithAlpha:[angles[index] floatValue]];
 //}
 
 //
