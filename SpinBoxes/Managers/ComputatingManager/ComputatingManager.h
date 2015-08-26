@@ -39,7 +39,7 @@ typedef struct
 - (CGFloat)alphaInDegreesForBoxWithPoint:(CGPoint)point;
 
 - (BOOL)isClockwiseWithAlpha:(CGFloat)alpha;
-- (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha;
+- (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha clockwise:(BOOL)isClockwise;
 
 - (CGFloat)nearestAngleCenterBoxViewWithAlpha:(CGFloat)alpha;
 - (CGFloat)nearestAngleCenterBoxViewWithAlpha:(CGFloat)alpha clockwise:(BOOL)clockwise;

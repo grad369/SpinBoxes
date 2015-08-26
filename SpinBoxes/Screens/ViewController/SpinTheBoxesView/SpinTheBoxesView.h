@@ -14,7 +14,6 @@
 
 @interface SpinTheBoxesView : UIView
 @property (nonatomic, weak) id<SpinTheBoxesViewDelegate> delegate;
-@property (nonatomic, assign) CGFloat value;
 @end
 
 

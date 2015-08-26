@@ -24,7 +24,7 @@
                                     <view contentMode="scaleToFill" id="hGb-E5-Apa" customClass="DynamicItem">
                                         <rect key="frame" x="158" y="212" width="82" height="95"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                        <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                     </view>
                                     <view contentMode="scaleToFill" id="Ibm-8W-sKI" customClass="BoxView">
                                         <rect key="frame" x="227" y="109" width="82" height="95"/>
@@ -177,24 +177,10 @@
                                     <outletCollection property="boxViews" destination="dLd-aq-2ZR" id="jcO-7V-igL"/>
                                 </connections>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="ljkhg" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Cv-Ax-KlQ">
+                            <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0Cv-Ax-KlQ">
                                 <rect key="frame" x="0.0" y="490" width="320" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" red="0.53333333329999999" green="0.88235294119999996" blue="0.93333333330000001" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <slider opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="10" minValue="2" maxValue="20" id="agA-fq-76R">
-                                <rect key="frame" x="22" y="519" width="276" height="31"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <connections>
-                                    <action selector="changed:" destination="vXZ-lx-hvc" eventType="valueChanged" id="4XP-OY-wCi"/>
-                                </connections>
-                            </slider>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="FRd-mO-W7E">
-                                <rect key="frame" x="31" y="541" width="259" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
@@ -205,9 +191,7 @@
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
                     <connections>
                         <outlet property="label" destination="0Cv-Ax-KlQ" id="LVo-aa-5bN"/>
-                        <outlet property="slider" destination="agA-fq-76R" id="QqQ-ds-MUY"/>
                         <outlet property="spinTheBoxesView" destination="fhr-S0-xjK" id="Gzr-p4-h9N"/>
-                        <outlet property="textLabel" destination="FRd-mO-W7E" id="Ctq-6T-81w"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>

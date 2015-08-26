@@ -14,8 +14,6 @@
 @interface ViewController ()<SpinTheBoxesViewDelegate>
 @property (weak, nonatomic) IBOutlet SpinTheBoxesView *spinTheBoxesView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
-@property (weak, nonatomic) IBOutlet UISlider *slider;
-@property (weak, nonatomic) IBOutlet UILabel *textLabel;
 @end
 
 @implementation ViewController
@@ -73,12 +71,6 @@
     } completion:^(BOOL finished) {
         _label.text = @"";
     }];
-}
-
-- (IBAction)changed:(UISlider *)sender
-{
-    _spinTheBoxesView.value = sender.value;
-    _textLabel.text = [NSString stringWithFormat:@"%f", sender.value];
 }
 
 @end

@@ -18,7 +18,6 @@
 		920359161B0092A500B04710 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 920359151B0092A500B04710 /* BoxView.m */; };
 		920359231B0101F800B04710 /* MTKObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203591A1B0101F800B04710 /* MTKObserver.m */; };
 		920359241B0101F800B04710 /* NSObject+MTKObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203591E1B0101F800B04710 /* NSObject+MTKObserving.m */; };
-		9203592C1B0163D300B04710 /* TapView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203592B1B0163D300B04710 /* TapView.m */; };
 		9277578A1B66D70600BA6A4F /* ComputatingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 927757891B66D70600BA6A4F /* ComputatingManager.m */; };
 		92ADBB311B78D88900C4B54D /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB301B78D88900C4B54D /* DynamicItem.m */; };
 /* End PBXBuildFile section */
@@ -52,8 +51,6 @@
 		920359201B0101F800B04710 /* keypath.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = keypath.h; sourceTree = "<group>"; };
 		920359211B0101F800B04710 /* metamacros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = metamacros.h; sourceTree = "<group>"; };
 		920359221B0101F800B04710 /* scope.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scope.h; sourceTree = "<group>"; };
-		9203592A1B0163D300B04710 /* TapView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TapView.h; sourceTree = "<group>"; };
-		9203592B1B0163D300B04710 /* TapView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TapView.m; sourceTree = "<group>"; };
 		927757881B66D70600BA6A4F /* ComputatingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputatingManager.h; sourceTree = "<group>"; };
 		927757891B66D70600BA6A4F /* ComputatingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputatingManager.m; sourceTree = "<group>"; };
 		9277578B1B6AE4B400BA6A4F /* SingletonProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingletonProtocol.h; sourceTree = "<group>"; };
@@ -153,7 +150,6 @@
 		920358F61AFFD3B100B04710 /* SpinTheBoxesView */ = {
 			isa = PBXGroup;
 			children = (
-				920359291B0163D300B04710 /* TapView */,
 				92ADBB2E1B78D86A00C4B54D /* DynamicItem */,
 				920359131B0092A500B04710 /* BoxView */,
 				920359001AFFD3DD00B04710 /* SpinTheBoxesView.h */,
@@ -211,15 +207,6 @@
 				920359221B0101F800B04710 /* scope.h */,
 			);
 			path = Utilities;
-			sourceTree = "<group>";
-		};
-		920359291B0163D300B04710 /* TapView */ = {
-			isa = PBXGroup;
-			children = (
-				9203592A1B0163D300B04710 /* TapView.h */,
-				9203592B1B0163D300B04710 /* TapView.m */,
-			);
-			path = TapView;
 			sourceTree = "<group>";
 		};
 		927757871B66D70600BA6A4F /* ComputatingManager */ = {
@@ -327,7 +314,6 @@
 				920358D41AFFD30B00B04710 /* AppDelegate.m in Sources */,
 				92ADBB311B78D88900C4B54D /* DynamicItem.m in Sources */,
 				920359231B0101F800B04710 /* MTKObserver.m in Sources */,
-				9203592C1B0163D300B04710 /* TapView.m in Sources */,
 				920358FF1AFFD3C000B04710 /* UIView+Helpers.m in Sources */,
 				920358D11AFFD30B00B04710 /* main.m in Sources */,
 			);

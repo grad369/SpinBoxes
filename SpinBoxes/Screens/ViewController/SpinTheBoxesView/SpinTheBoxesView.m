@@ -51,75 +51,15 @@
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
-//#pragma mark - |TapViewDelegate|
-//
-//- (void)tapViewWillStartRotating:(TapView *)tapView
-//{
-//    _startAngle = self.angle;
-//}
-//
-//- (void)tapViewRotating:(TapView *)tapView deltaAlpha:(CGFloat)theDeltaAlpha clockwise:(BOOL)theClockwise
-//{
-//    CGFloat angle = _startAngle + (theClockwise ? ABS(theDeltaAlpha) : -ABS(theDeltaAlpha));
-//    self.angle = angle;
-//}
-//
-//- (void)tapViewWillStartDecelerating:(TapView *)tapView velocity:(CGPoint)point clockwise:(BOOL)isClockwise
-//{
-//    BOOL directionHorisontal = ABS(point.x) > ABS(point.y);
-//    CGFloat duration = 0.1/(directionHorisontal ? point.x : point.y);
-//    if (duration < 0.0001f) 
-//        duration = 0.0001f;
-//    if (duration > 0.003f)
-//        duration = 0.01f;
-//    
-//    [self changeAngle:self.angle  duration:duration step:0.0001f clockwise:(BOOL)isClockwise];
-//}
-//
-//- (void)tapViewDidFinishedRotating:(TapView *)tapView
-//{
-//    _angle = [CalculationManager resetAngle:self.angle];
-//}
-//
-//- (void)tapViewWithTapRecognizer:(TapView *)tapView point:(CGPoint)thePoint
-//{
-//    BoxView *boxView = [self selectBoxViewithPoint:thePoint];
-//    
-//    if (boxView != nil) 
-//        [self showMessage:[NSString stringWithFormat:@"Tap #%@", boxView.titleText]];
-//}
-//
-//- (void)tapViewWithLongTapRecognizer:(TapView *)tapView point:(CGPoint)thePoint
-//{
-//    BoxView *boxView = [self selectBoxViewithPoint:thePoint];
-//    
-//    if (boxView != nil)
-//        [self showMessage:[NSString stringWithFormat:@"Longpress start #%@", boxView.titleText]];
-//}
-//
-//- (void)tapViewWithLongTapFinishedRecognizer:(TapView *)tapView point:(CGPoint)thePoint
-//{
-//    BoxView *boxView = [self selectBoxViewithPoint:thePoint];
-//    
-//    if (boxView != nil)
-//        [self showMessage:[NSString stringWithFormat:@"End Longpress #%@", boxView.titleText]];
-//}
-
 #pragma mark - |BoxViewDelegate|
 
 - (void)boxView:(BoxView *)view swipeWithVelocity:(CGPoint)velocity
 {
     _animationRunning = YES;
-    //[_dynamicItem sizeToFit];
-    //NSLog(@"++++%@", NSStringFromCGRect(_dynamicItem.frame));
-    //[self removeLinearVelocity];
     [_animator removeAllBehaviors];
     _dynamicItem.center = view.center;
     [self setAttachmentBehavior];
     [self addLinearVelocity:velocity];
-    
-    
-    //_dynamicItem.startAngle = [COMPUTATION_MANAGER alphaInDegreesForBoxWithCenter:view.center];
 }
 
 - (void)touchesBeginOnBoxView:(BoxView *)view tapPointInSuperview:(CGPoint)point
@@ -132,8 +72,6 @@
     }
     
     _startMovedAngle = _angle - [COMPUTATION_MANAGER alphaInDegreesForBoxWithPoint:point];
-    //_dynamicItem.center = view.center;
-    //[_animator updateItemUsingCurrentState:_dynamicItem];
     
     if (_delegate != nil)
         [_delegate spinTheBoxesView:self tapOnView:view];
@@ -145,7 +83,6 @@
     CGFloat angleBoxView = [COMPUTATION_MANAGER alphaInDegreesForBoxWithPoint:point];
     CGFloat alpha = (angleBoxView + _startMovedAngle);
     self.angle = [COMPUTATION_MANAGER resetAngle:alpha];
-     //NSLog(@"--------++%@ == %f == %f", NSStringFromCGPoint(point), angleBoxView, alpha);
 }
 
 - (void)touchesEndedOnBoxView:(BoxView *)view
@@ -192,14 +129,14 @@
 
 - (void)dynamicAnimatorWillResume:(UIDynamicAnimator*)animator
 {
-    //NSLog(@"===%@1", animator);
+    NSLog(@"===%@1", animator);
 }
 
 - (void)dynamicAnimatorDidPause:(UIDynamicAnimator*)animator
 {
     _animationRunning = NO;
     
-    //NSLog(@"===%@2", animator);
+    NSLog(@"===%@2", animator);
 }
 
 #pragma mark - Privates
@@ -264,10 +201,8 @@
     attachmentBehavior.frequency = 0;
     attachmentBehavior.damping = 1;
     attachmentBehavior.length = 0;
-    //[attachmentBehavior addChildBehavior:item];
     
     [_animator addBehavior:attachmentBehavior];
-    //[_animator removeBehavior:attachmentBehavior];
 }
 
 - (void)dynamicItemAttachmentToView:(UIView *)view
@@ -281,10 +216,8 @@
     attachmentBehavior.frequency = 0;
     attachmentBehavior.damping = 1;
     attachmentBehavior.length = 0;
-    //[attachmentBehavior addChildBehavior:item];
     
     [_animator addBehavior:attachmentBehavior];
-    //[_animator removeBehavior:attachmentBehavior];
 }
 
 - (void)setAttachmentBehavior
@@ -379,9 +312,7 @@
     else
         deltaAngle = [COMPUTATION_MANAGER resetAngle:(angleBoxViewWithStartAngle + 360 - nearestAngleCenterOfBoxView)];
     
-    CGFloat durationAnimation = deltaAngle/_value;
-    NSLog(@"%f == %f == %f", angleBoxViewWithStartAngle, nearestAngleCenterOfBoxView, durationAnimation);
-    NSLog(@"%f delta==", deltaAngle);
+    CGFloat durationAnimation = deltaAngle / 10.0f;
     
     [UIView animateWithDuration:durationAnimation
                           delay:0.0f
@@ -390,17 +321,6 @@
      {
          self.angle = nearestAngleCenterOfBoxView;
      } completion:^(BOOL finished) {}];
-}
-
-- (void)showMessage:(NSString *)text
-{
-    UIAlertView *alertView = [[UIAlertView alloc] initWithTitle:@"Message"
-                                                        message:text
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles: nil];
-    [alertView show];
-    NSLog(@"Log message: %@", text);
 }
 
 @end
