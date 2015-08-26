@@ -16,7 +16,6 @@ extern NSString const *BoxViewChangeAlphaNotification;
 @interface BoxView : UIView
 @property (nonatomic, copy) NSString *titleText;
 @property (nonatomic, assign) CGFloat startAngle;
-
 @property (nonatomic, assign) id<BoxViewDelegate> delegate;
 @end
 

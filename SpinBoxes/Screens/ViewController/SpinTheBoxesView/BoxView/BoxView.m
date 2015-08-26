@@ -7,7 +7,6 @@
 //
 
 #import "BoxView.h"
-#import "MTKObserving.h"
 #import "ComputatingManager.h"
 
 NSString const *BoxViewChangeAlphaNotification = @"BoxViewChangeAlphaNotification";
@@ -23,27 +22,14 @@ NSString const *BoxViewChangeAlphaNotification = @"BoxViewChangeAlphaNotificatio
 - (void)dealloc
 {
     NSLog(@"BoxView dealloc");
-    [self removeAllObservations];
 }
 
 - (void)awakeFromNib
 {
     _titleText = [_titleLabel.text copy];
-   
-    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeOnView:)];
-    [self addGestureRecognizer:panRecognizer];
     
-    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
-    [self addGestureRecognizer:longPressRecognizer];
-    
-    [[NSNotificationCenter defaultCenter] addObserverForName:(NSString*)BoxViewChangeAlphaNotification
-                                                      object:nil
-                                                       queue:nil
-                                                  usingBlock:^(NSNotification *notification)
-     {
-         CGFloat currentAngle = [notification.object floatValue] + _startAngle;
-         self.center = [COMPUTATION_MANAGER centerBoxViewWithAlpha:currentAngle];
-    }];
+    [self addRecognizers];
+    [self addObserver];
 }
 
 - (void)layoutSubviews
@@ -59,11 +45,12 @@ NSString const *BoxViewChangeAlphaNotification = @"BoxViewChangeAlphaNotificatio
     _titleLabel.text = titleText;
 }
 
-#pragma mark - Privates
+#pragma mark - Actions
 
 - (void)swipeOnView:(UIPanGestureRecognizer *)recognizer
 {
-    switch (recognizer.state) {
+    switch (recognizer.state)
+    {
         case UIGestureRecognizerStateBegan:
         {
             break;
@@ -83,7 +70,6 @@ NSString const *BoxViewChangeAlphaNotification = @"BoxViewChangeAlphaNotificatio
             {
                 CGPoint velocity = [recognizer velocityInView:self];
                 [_delegate boxView:self swipeWithVelocity:CGPointMake(velocity.x, velocity.y)];
-                NSLog(@"UIGestureRecognizerStateEnded");
             }
             break;
         }
@@ -131,6 +117,29 @@ NSString const *BoxViewChangeAlphaNotification = @"BoxViewChangeAlphaNotificatio
     }
     
     NSLog(@"touchesEnded");
+}
+
+#pragma mark - Privates
+
+- (void)addRecognizers
+{
+    UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeOnView:)];
+    [self addGestureRecognizer:panRecognizer];
+    
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [self addGestureRecognizer:longPressRecognizer];
+}
+
+- (void)addObserver
+{
+    [[NSNotificationCenter defaultCenter] addObserverForName:(NSString*)BoxViewChangeAlphaNotification
+                                                      object:nil
+                                                       queue:nil
+                                                  usingBlock:^(NSNotification *notification)
+     {
+         CGFloat currentAngle = [notification.object floatValue] + _startAngle;
+         self.center = [COMPUTATION_MANAGER centerBoxViewWithAlpha:currentAngle];
+     }];
 }
 
 @end

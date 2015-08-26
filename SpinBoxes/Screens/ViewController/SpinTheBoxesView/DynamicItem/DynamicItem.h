@@ -8,8 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol DynamicItemDelegate;
+
+
 @interface DynamicItem : UIView
-@property (nonatomic, weak) UIAttachmentBehavior *attachmentBehavior;
 @property (nonatomic, weak) UIDynamicItemBehavior *linearVelocityBehavior;
-@property (nonatomic, weak) UISnapBehavior *snapBehavior;
+@property (nonatomic, weak) id<DynamicItemDelegate> delegate;
+- (void)addDynamicsWithView:(UIView *)view;
+- (void)removeAllBehaviors;
+- (void)addLinearVelocity:(CGPoint)velocity actionDynamicItemBehavior:(void(^)())action;
+@end
+
+
+@protocol DynamicItemDelegate <NSObject>
+- (void)animatorDidPauseWithDynamicItem:(DynamicItem *)item;
 @end
