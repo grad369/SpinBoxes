@@ -7,12 +7,14 @@
 //
 
 #import "ComputatingManager.h"
+#import "MTKObserving.h"
 
 #define RADIANS_TO_DEGREES(radians) ((radians) * (180.0f / M_PI))
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0f * M_PI)
 #define LENGHT_TO_CELLS_FROM_EDGE 10.0f
 
-static ConfigurationBox staticConfiguration;
+@interface ComputatingManager ()
+@end
 
 @implementation ComputatingManager
 
@@ -50,8 +52,6 @@ static ConfigurationBox staticConfiguration;
         widthBetweenCells = (view.width - 3 * widthBox- 2 * LENGHT_TO_CELLS_FROM_EDGE)/2;
     }
     
-    view.center = view.superview.center;
-    
     ConfigurationBox configuration;
     configuration.boxSize    = CGSizeMake(widthBox, heightBox);
     configuration.centerXMin = LENGHT_TO_CELLS_FROM_EDGE + widthBox/2;
@@ -62,9 +62,9 @@ static ConfigurationBox staticConfiguration;
     configuration.radiusY = (configuration.centerYMax - configuration.centerYMin)/2;
     configuration.center = CGPointMake(view.width/2, view.height/2);
     
-    staticConfiguration = configuration;
+    _configurationBox = configuration;
     
-    return staticConfiguration;
+    return _configurationBox;
 }
 
 - (CGFloat)resetAngle:(CGFloat)angle
@@ -88,7 +88,7 @@ static ConfigurationBox staticConfiguration;
 - (CGFloat)lenghtWithAlpha:(CGFloat)alpha
 {
     CGPoint point = [self centerBoxViewWithAlpha:alpha];
-    CGPoint center = staticConfiguration.center;
+    CGPoint center = _configurationBox.center;
     
     return sqrt(pow(point.x - center.x, 2) + pow(point.y - center.y, 2));
 }
@@ -98,7 +98,7 @@ static ConfigurationBox staticConfiguration;
     alpha = [self resetAngle:alpha];
     
     CGFloat centerBoxViewX = -1, centerBoxViewY = -1;
-    ConfigurationBox c = staticConfiguration;
+    ConfigurationBox c = _configurationBox;
     
     if (alpha == 0) {
         return CGPointMake(c.center.x, c.centerYMin);
@@ -163,12 +163,10 @@ static ConfigurationBox staticConfiguration;
     return CGPointMake(centerBoxViewX, centerBoxViewY);
 }
 
-- (CGFloat)alphaInDegreesForBoxWithCenter:(CGPoint)center
+- (CGFloat)alphaInDegreesForBoxWithPoint:(CGPoint)point
 {
-    ConfigurationBox c = staticConfiguration;
-    
-    CGFloat y = center.y - c.center.y;
-    CGFloat x = center.x - c.center.x;
+    CGFloat y = _configurationBox.center.y - point.y;
+    CGFloat x = _configurationBox.center.x - point.x;
     
     CGFloat radian = 0;
     
@@ -191,14 +189,13 @@ static ConfigurationBox staticConfiguration;
             radian = atan(y/x);
     }
     
-    return RADIANS_TO_DEGREES(radian);
+    return [self resetAngle:(RADIANS_TO_DEGREES(radian) - 90)];
 }
 
-- (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha
+- (BOOL)isClockwiseWithAlpha:(CGFloat)alpha
 {
     static CGFloat currentAngle = 0, oldAngle = 0;
     BOOL isClockwise = YES;
-    NSInteger index = 0;
     
     currentAngle = [self resetAngle:alpha];
     
@@ -206,6 +203,15 @@ static ConfigurationBox staticConfiguration;
         isClockwise = currentAngle > oldAngle;
     
     oldAngle = currentAngle;
+    
+    return isClockwise;
+}
+
+- (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha clockwise:(BOOL)isClockwise
+{
+    CGFloat currentAngle = [self resetAngle:alpha];
+    
+    NSInteger index = 0;
     
     while (currentAngle > 0) {
         currentAngle -= 45;
@@ -215,16 +221,87 @@ static ConfigurationBox staticConfiguration;
     NSArray *angles = @[@(0), @(45), @(90), @(135), @(180), @(225), @(270), @(315)];
     
     if (isClockwise) {
+        index += 3;
+        
         if (index > (angles.count - 1))
-            index = 0;
+            index -= angles.count;
     }
     else {
-        if (--index < 0) {
-            index = (angles.count - 1);
+        index -= 4;
+        if (index < 0) {
+            index += angles.count;
         }
     }
     
     return [self centerBoxViewWithAlpha:[angles[index] floatValue]];
+}
+
+- (CGFloat)nearestAngleCenterBoxViewWithAlpha:(CGFloat)alpha
+{
+    CGFloat currentAngle = [self resetAngle:alpha];
+    CGFloat minDeltaAngle = CGFLOAT_MAX;
+    NSInteger index = 0;
+    
+    NSArray *angles = @[@(0), @(45), @(90), @(135), @(180), @(225), @(270), @(315)];
+    
+    for (NSInteger i = 0; i < angles.count; i++) {
+        CGFloat angle = [angles[i] floatValue];
+        
+        if (ABS(currentAngle - angle) < minDeltaAngle) {
+            minDeltaAngle = ABS(currentAngle - angle);
+            index = i;
+        }
+    }
+    
+   return [angles[index] floatValue];
+}
+
+- (CGFloat)nearestAngleCenterBoxViewWithAlpha:(CGFloat)alpha clockwise:(BOOL)clockwise
+{
+    CGFloat currentAngle = [self resetAngle:alpha];
+    NSInteger currentIndex = 0;
+    
+    NSArray *angles = @[@(0), @(45), @(90), @(135), @(180), @(225), @(270), @(315)];
+    
+    while (currentAngle > 0) {
+        currentAngle -= 45;
+        currentIndex++;
+    }
+    
+    if (!clockwise)
+        currentIndex--;
+    
+    if (currentIndex >= angles.count)
+        currentIndex -= angles.count;
+    
+    if (currentIndex < 0)
+        currentIndex += angles.count;
+    
+    return [angles[currentIndex] floatValue];
+}
+
+- (CGFloat)alphaInDegreesWithStartAlpha:(CGFloat)startAlpha
+                              clockwise:(BOOL)clockwise
+                                  steps:(NSUInteger)steps
+                                   step:(NSUInteger)step
+{
+    static CGFloat deltaAlpha = 0;
+    
+    if (step == 0)
+    {
+        CGPoint finishCenterBoxView = [self finishCenterBoxViewWithAlpha:startAlpha clockwise:clockwise];
+        CGFloat finishAlpha = [self alphaInDegreesForBoxWithPoint:finishCenterBoxView];
+        
+        if ((startAlpha < finishAlpha && clockwise) || (startAlpha > finishAlpha && !clockwise)) {
+            deltaAlpha = (finishAlpha - startAlpha) / steps;
+        }
+        else {
+            CGFloat delta = clockwise ? 360 : -360;
+            deltaAlpha = (finishAlpha - startAlpha + delta) / steps;
+        }
+    }
+    
+    return [self resetAngle:(startAlpha + deltaAlpha * step)];
 }
 
 @end

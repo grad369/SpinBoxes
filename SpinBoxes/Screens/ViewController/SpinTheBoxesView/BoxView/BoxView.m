@@ -33,19 +33,16 @@ NSString const *BoxViewChangeAlphaNotification = @"BoxViewChangeAlphaNotificatio
     UIPanGestureRecognizer *panRecognizer = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(swipeOnView:)];
     [self addGestureRecognizer:panRecognizer];
     
-    UITapGestureRecognizer *tapRecognizer = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapOnView:)];
-    [self addGestureRecognizer:tapRecognizer];
+    UILongPressGestureRecognizer *longPressRecognizer = [[UILongPressGestureRecognizer alloc] initWithTarget:self action:@selector(longPress:)];
+    [self addGestureRecognizer:longPressRecognizer];
     
     [[NSNotificationCenter defaultCenter] addObserverForName:(NSString*)BoxViewChangeAlphaNotification
                                                       object:nil
                                                        queue:nil
                                                   usingBlock:^(NSNotification *notification)
      {
-         if (!self.activeBoxView)
-         {             
-             CGFloat currentAngle = [notification.object floatValue] + _startAngle;
-             self.center = [COMPUTATION_MANAGER centerBoxViewWithAlpha:currentAngle];
-         }
+         CGFloat currentAngle = [notification.object floatValue] + _startAngle;
+         self.center = [COMPUTATION_MANAGER centerBoxViewWithAlpha:currentAngle];
     }];
 }
 
@@ -65,22 +62,75 @@ NSString const *BoxViewChangeAlphaNotification = @"BoxViewChangeAlphaNotificatio
 #pragma mark - Privates
 
 - (void)swipeOnView:(UIPanGestureRecognizer *)recognizer
-{    
-    if (_delegate != nil && [_delegate respondsToSelector:@selector(boxView:swipeWithVelocity:)])
-    {
-        CGPoint velocity = [recognizer velocityInView:self];
-        [_delegate boxView:self swipeWithVelocity:CGPointMake(velocity.x/10, velocity.y/10)];
-    }
-}
-
-- (void)tapOnView:(UITapGestureRecognizer *)recognizer
 {
-    if (_delegate != nil && [_delegate respondsToSelector:@selector(tapOnBoxView:)])
-    {
-        [_delegate tapOnBoxView:self];
+    switch (recognizer.state) {
+        case UIGestureRecognizerStateBegan:
+        {
+            break;
+        }
+        case UIGestureRecognizerStateChanged:
+        {
+            if (_delegate != nil)
+            {
+                CGPoint point = [recognizer locationInView:self.superview];
+                [_delegate touchesMovedOnBoxView:self tapPointInSuperview:point];
+            }
+            break;
+        }
+        case UIGestureRecognizerStateEnded:
+        {
+            if (_delegate != nil)
+            {
+                CGPoint velocity = [recognizer velocityInView:self];
+                [_delegate boxView:self swipeWithVelocity:CGPointMake(velocity.x, velocity.y)];
+                NSLog(@"UIGestureRecognizerStateEnded");
+            }
+            break;
+        }
+        default:
+            break;
     }
 }
 
+- (void)longPress:(UILongPressGestureRecognizer *)recognizer
+{
+    if (_delegate != nil && recognizer.state == UIGestureRecognizerStateBegan)
+        [_delegate longPressBeginOnBoxView:self];
+    
+    if (_delegate != nil && recognizer.state == UIGestureRecognizerStateEnded)
+        [_delegate longPressEndedOnBoxView:self];
+}
 
+#pragma mark - |UIResponder|
+
+- (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event
+{    
+    if (_delegate != nil)
+    {
+        UITouch *touch = [touches anyObject];
+        CGPoint tapPoint = [touch locationInView:self.superview];
+        [_delegate touchesBeginOnBoxView:self tapPointInSuperview:tapPoint];
+    }
+}
+
+- (void)touchesMoved:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (_delegate != nil)
+    {
+        UITouch *touch = [touches anyObject];
+        CGPoint tapPoint = [touch locationInView:self.superview];
+        [_delegate touchesMovedOnBoxView:self tapPointInSuperview:tapPoint];
+    }
+}
+
+- (void)touchesEnded:(NSSet *)touches withEvent:(UIEvent *)event
+{
+    if (_delegate != nil)
+    {
+        [_delegate touchesEndedOnBoxView:self];
+    }
+    
+    NSLog(@"touchesEnded");
+}
 
 @end

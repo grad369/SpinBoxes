@@ -9,5 +9,7 @@
 #import <UIKit/UIKit.h>
 
 @interface DynamicItem : UIView
-
+@property (nonatomic, weak) UIAttachmentBehavior *attachmentBehavior;
+@property (nonatomic, weak) UIDynamicItemBehavior *linearVelocityBehavior;
+@property (nonatomic, weak) UISnapBehavior *snapBehavior;
 @end

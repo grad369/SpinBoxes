@@ -27,14 +27,26 @@ typedef struct
 
 
 @interface ComputatingManager : NSObject <SingletonProtocol>
+
+@property (nonatomic, assign, readonly) ConfigurationBox configurationBox;
+
 - (ConfigurationBox)setConfigurationWithView:(UIView *)view;
+
 - (CGFloat)resetAngle:(CGFloat)angle;
 
 - (CGPoint)centerBoxViewWithAlpha:(CGFloat)alpha;
 - (CGFloat)lenghtWithAlpha:(CGFloat)alpha;
-- (CGFloat)alphaInDegreesForBoxWithCenter:(CGPoint)center;
+- (CGFloat)alphaInDegreesForBoxWithPoint:(CGPoint)point;
 
+- (BOOL)isClockwiseWithAlpha:(CGFloat)alpha;
 - (CGPoint)finishCenterBoxViewWithAlpha:(CGFloat)alpha;
 
+- (CGFloat)nearestAngleCenterBoxViewWithAlpha:(CGFloat)alpha;
+- (CGFloat)nearestAngleCenterBoxViewWithAlpha:(CGFloat)alpha clockwise:(BOOL)clockwise;
+
+- (CGFloat)alphaInDegreesWithStartAlpha:(CGFloat)startAlpha
+                              clockwise:(BOOL)clockwise
+                                  steps:(NSUInteger)steps
+                                   step:(NSUInteger)step;
 @end
 

@@ -8,6 +8,18 @@
 
 #import <UIKit/UIKit.h>
 
+@class BoxView;
+@protocol SpinTheBoxesViewDelegate;
+
+
 @interface SpinTheBoxesView : UIView
-@property (nonatomic, assign) CGFloat angle;
+@property (nonatomic, weak) id<SpinTheBoxesViewDelegate> delegate;
+@property (nonatomic, assign) CGFloat value;
+@end
+
+
+@protocol SpinTheBoxesViewDelegate <NSObject>
+- (void)spinTheBoxesView:(SpinTheBoxesView *)view tapOnView:(BoxView *)boxView;
+- (void)spinTheBoxesView:(SpinTheBoxesView *)view longPressBeginOnView:(BoxView *)boxView;
+- (void)spinTheBoxesView:(SpinTheBoxesView *)view longPressEndedOnView:(BoxView *)boxView;
 @end

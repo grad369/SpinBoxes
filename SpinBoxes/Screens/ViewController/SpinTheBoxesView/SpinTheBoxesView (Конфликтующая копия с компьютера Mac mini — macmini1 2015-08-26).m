@@ -112,10 +112,7 @@
     _animationRunning = YES;
     //[_dynamicItem sizeToFit];
     //NSLog(@"++++%@", NSStringFromCGRect(_dynamicItem.frame));
-    //[self removeLinearVelocity];
-    [_animator removeAllBehaviors];
-    _dynamicItem.center = view.center;
-    [self setAttachmentBehavior];
+    [self removeLinearVelocity];
     [self addLinearVelocity:velocity];
     
     
@@ -132,7 +129,7 @@
     }
     
     _startMovedAngle = _angle - [COMPUTATION_MANAGER alphaInDegreesForBoxWithPoint:point];
-    //_dynamicItem.center = view.center;
+    _dynamicItem.center = view.center;
     //[_animator updateItemUsingCurrentState:_dynamicItem];
     
     if (_delegate != nil)
@@ -341,12 +338,11 @@
             BOOL clockwise = [COMPUTATION_MANAGER isClockwiseWithAlpha:_angle];
             CGPoint velocity = [_dynamicItem.linearVelocityBehavior linearVelocityForItem:_dynamicItem];
             
-            if (ABS(velocity.x) + ABS(velocity.y) < 35) {
-                
-                
-                [selfId moveToFinishPositionWithClockwise:clockwise];
+            if (ABS(velocity.x) + ABS(velocity.y) < 120) {
                 [_animator removeAllBehaviors];
                 [self setAttachmentBehavior];
+                
+                [selfId moveToFinishPositionWithClockwise:clockwise];
             }
         }
     };
@@ -379,9 +375,9 @@
     else
         deltaAngle = [COMPUTATION_MANAGER resetAngle:(angleBoxViewWithStartAngle + 360 - nearestAngleCenterOfBoxView)];
     
-    CGFloat durationAnimation = deltaAngle/_value;
-    NSLog(@"%f == %f == %f", angleBoxViewWithStartAngle, nearestAngleCenterOfBoxView, durationAnimation);
-    NSLog(@"%f delta==", deltaAngle);
+    CGFloat durationAnimation = deltaAngle/10;
+//    NSLog(@"%f == %f == %f", angleBoxViewWithStartAngle, nearestAngleCenterOfBoxView, durationAnimation);
+//    NSLog(@"%f delta==", deltaAngle);
     
     [UIView animateWithDuration:durationAnimation
                           delay:0.0f
