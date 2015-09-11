@@ -12,8 +12,9 @@
 
 
 @interface DynamicItem : UIView
-@property (nonatomic, weak) UIDynamicItemBehavior *linearVelocityBehavior;
+
 @property (nonatomic, weak) id<DynamicItemDelegate> delegate;
+@property (nonatomic, assign, readonly) CGPoint velocity;
 - (void)addDynamicsWithView:(UIView *)view;
 - (void)removeAllBehaviors;
 - (void)addLinearVelocity:(CGPoint)velocity actionDynamicItemBehavior:(void(^)())action;

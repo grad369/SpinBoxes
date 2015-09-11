@@ -69,7 +69,7 @@
     [UIView animateWithDuration:0.5 animations:^{
         _label.alpha = 0;
     } completion:^(BOOL finished) {
-        _label.text = @"";
+        //_label.text = @"";
     }];
 }
 

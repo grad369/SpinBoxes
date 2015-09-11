@@ -12,9 +12,19 @@
 
 @interface DynamicItem () <UIDynamicAnimatorDelegate>
 @property (nonatomic, strong) UIDynamicAnimator *animator;
+@property (nonatomic, weak) UIDynamicItemBehavior *linearVelocityBehavior;
 @end
 
 @implementation DynamicItem
+
+#pragma mark - |Properties|
+
+- (CGPoint)velocity
+{
+    return [self.linearVelocityBehavior linearVelocityForItem:self];
+}
+
+#pragma mark - Publics
 
 - (void)addDynamicsWithView:(UIView *)view
 {
@@ -35,6 +45,7 @@
     [item addLinearVelocity:velocity forItem:self];
     item.density = 500;
     item.friction = 500;
+    item.resistance = 0.2;
     item.action = action;
     
     [_animator updateItemUsingCurrentState:self];

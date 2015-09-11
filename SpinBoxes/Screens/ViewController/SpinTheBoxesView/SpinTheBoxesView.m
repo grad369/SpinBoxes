@@ -79,7 +79,7 @@
             selfId.angle = [COMPUTATION_MANAGER resetAngle:(currentAngle + selfId.startMovedAngle)];
             
             BOOL clockwise = [COMPUTATION_MANAGER isClockwiseWithAlpha:selfId.angle];
-            CGPoint velocity = [dynamicItem.linearVelocityBehavior linearVelocityForItem:dynamicItem];
+            CGPoint velocity =  dynamicItem.velocity;
             
             if (ABS(velocity.x) + ABS(velocity.y) < 35) {
                 [selfId moveToFinishPositionWithClockwise:clockwise];
@@ -180,9 +180,10 @@
     
     CGFloat durationAnimation = deltaAngle / 10.0f;
     
+    
     [UIView animateWithDuration:durationAnimation
                           delay:0.0f
-                        options:UIViewAnimationOptionBeginFromCurrentState
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut
                      animations:^
      {
          self.angle = nearestAngleCenterOfBoxView;

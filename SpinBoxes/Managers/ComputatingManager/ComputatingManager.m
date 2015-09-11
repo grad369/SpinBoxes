@@ -195,7 +195,7 @@
 - (BOOL)isClockwiseWithAlpha:(CGFloat)alpha
 {
     static CGFloat currentAngle = 0, oldAngle = 0;
-    BOOL isClockwise = YES;
+    static BOOL isClockwise = YES;
     
     currentAngle = [self resetAngle:alpha];
     
