@@ -26,6 +26,7 @@ NSString const *BoxViewChangeAlphaNotification = @"BoxViewChangeAlphaNotificatio
 
 - (void)awakeFromNib
 {
+    [super awakeFromNib];
     _titleText = [_titleLabel.text copy];
     
     [self addRecognizers];
