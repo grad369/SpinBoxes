@@ -7,29 +7,24 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		920358D11AFFD30B00B04710 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 920358D01AFFD30B00B04710 /* main.m */; };
-		920358D41AFFD30B00B04710 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 920358D31AFFD30B00B04710 /* AppDelegate.m */; };
 		920358DA1AFFD30B00B04710 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 920358D81AFFD30B00B04710 /* Main.storyboard */; };
-		920358DC1AFFD30B00B04710 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 920358DB1AFFD30B00B04710 /* Images.xcassets */; };
 		920358DF1AFFD30B00B04710 /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 920358DD1AFFD30B00B04710 /* LaunchScreen.xib */; };
 		920358FA1AFFD3B100B04710 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 920358F91AFFD3B100B04710 /* ViewController.m */; };
 		920358FF1AFFD3C000B04710 /* UIView+Helpers.m in Sources */ = {isa = PBXBuildFile; fileRef = 920358FE1AFFD3C000B04710 /* UIView+Helpers.m */; };
-		920359021AFFD3DD00B04710 /* SpinTheBoxesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 920359011AFFD3DD00B04710 /* SpinTheBoxesView.m */; };
-		920359161B0092A500B04710 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 920359151B0092A500B04710 /* BoxView.m */; };
 		920359231B0101F800B04710 /* MTKObserver.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203591A1B0101F800B04710 /* MTKObserver.m */; };
 		920359241B0101F800B04710 /* NSObject+MTKObserving.m in Sources */ = {isa = PBXBuildFile; fileRef = 9203591E1B0101F800B04710 /* NSObject+MTKObserving.m */; };
 		9277578A1B66D70600BA6A4F /* ComputatingManager.m in Sources */ = {isa = PBXBuildFile; fileRef = 927757891B66D70600BA6A4F /* ComputatingManager.m */; };
-		92ADBB311B78D88900C4B54D /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 92ADBB301B78D88900C4B54D /* DynamicItem.m */; };
+		929F6E671F3483550022C5C7 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 929F6E641F3483550022C5C7 /* main.m */; };
+		929F6E6B1F3483630022C5C7 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 929F6E6A1F3483630022C5C7 /* AppDelegate.m */; };
+		929F6E751F3484E80022C5C7 /* BoxView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929F6E6F1F3484E80022C5C7 /* BoxView.m */; };
+		929F6E761F3484E80022C5C7 /* DynamicItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 929F6E721F3484E80022C5C7 /* DynamicItem.m */; };
+		929F6E771F3484E80022C5C7 /* SpinBoxesView.m in Sources */ = {isa = PBXBuildFile; fileRef = 929F6E741F3484E80022C5C7 /* SpinBoxesView.m */; };
+		929F6E7A1F3485F90022C5C7 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 929F6E791F3485F90022C5C7 /* Images.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		920358CB1AFFD30B00B04710 /* SpinBoxes.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpinBoxes.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		920358CF1AFFD30B00B04710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		920358D01AFFD30B00B04710 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		920358D21AFFD30B00B04710 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
-		920358D31AFFD30B00B04710 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		920358D91AFFD30B00B04710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		920358DB1AFFD30B00B04710 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		920358DE1AFFD30B00B04710 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
 		920358E91AFFD30B00B04710 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		920358EA1AFFD30B00B04710 /* SpinBoxesTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = SpinBoxesTests.m; sourceTree = "<group>"; };
@@ -37,11 +32,6 @@
 		920358F91AFFD3B100B04710 /* ViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		920358FD1AFFD3C000B04710 /* UIView+Helpers.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Helpers.h"; sourceTree = "<group>"; };
 		920358FE1AFFD3C000B04710 /* UIView+Helpers.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Helpers.m"; sourceTree = "<group>"; };
-		920359001AFFD3DD00B04710 /* SpinTheBoxesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinTheBoxesView.h; sourceTree = "<group>"; };
-		920359011AFFD3DD00B04710 /* SpinTheBoxesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; lineEnding = 0; path = SpinTheBoxesView.m; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.objc; };
-		9203590E1AFFDBE300B04710 /* PrefixHeader.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
-		920359141B0092A500B04710 /* BoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
-		920359151B0092A500B04710 /* BoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
 		920359191B0101F800B04710 /* MTKObserver.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKObserver.h; sourceTree = "<group>"; };
 		9203591A1B0101F800B04710 /* MTKObserver.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MTKObserver.m; sourceTree = "<group>"; };
 		9203591B1B0101F800B04710 /* MTKObserving.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MTKObserving.h; sourceTree = "<group>"; };
@@ -54,8 +44,18 @@
 		927757881B66D70600BA6A4F /* ComputatingManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ComputatingManager.h; sourceTree = "<group>"; };
 		927757891B66D70600BA6A4F /* ComputatingManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ComputatingManager.m; sourceTree = "<group>"; };
 		9277578B1B6AE4B400BA6A4F /* SingletonProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SingletonProtocol.h; sourceTree = "<group>"; };
-		92ADBB2F1B78D88900C4B54D /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicItem.h; sourceTree = "<group>"; };
-		92ADBB301B78D88900C4B54D /* DynamicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicItem.m; sourceTree = "<group>"; };
+		929F6E631F3483550022C5C7 /* Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		929F6E641F3483550022C5C7 /* main.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		929F6E651F3483550022C5C7 /* PrefixHeader.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PrefixHeader.pch; sourceTree = "<group>"; };
+		929F6E691F3483630022C5C7 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		929F6E6A1F3483630022C5C7 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		929F6E6E1F3484E80022C5C7 /* BoxView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BoxView.h; sourceTree = "<group>"; };
+		929F6E6F1F3484E80022C5C7 /* BoxView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BoxView.m; sourceTree = "<group>"; };
+		929F6E711F3484E80022C5C7 /* DynamicItem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DynamicItem.h; sourceTree = "<group>"; };
+		929F6E721F3484E80022C5C7 /* DynamicItem.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DynamicItem.m; sourceTree = "<group>"; };
+		929F6E731F3484E80022C5C7 /* SpinBoxesView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SpinBoxesView.h; sourceTree = "<group>"; };
+		929F6E741F3484E80022C5C7 /* SpinBoxesView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SpinBoxesView.m; sourceTree = "<group>"; };
+		929F6E791F3485F90022C5C7 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +73,7 @@
 			isa = PBXGroup;
 			children = (
 				920358CD1AFFD30B00B04710 /* SpinBoxes */,
+				929F6E621F3483550022C5C7 /* Supporting Files */,
 				920358E71AFFD30B00B04710 /* SpinBoxesTests */,
 				920358CC1AFFD30B00B04710 /* Products */,
 			);
@@ -89,27 +90,14 @@
 		920358CD1AFFD30B00B04710 /* SpinBoxes */ = {
 			isa = PBXGroup;
 			children = (
-				920358D21AFFD30B00B04710 /* AppDelegate.h */,
-				920358D31AFFD30B00B04710 /* AppDelegate.m */,
-				920358D81AFFD30B00B04710 /* Main.storyboard */,
+				929F6E681F3483630022C5C7 /* Application */,
 				920358F41AFFD3B100B04710 /* Screens */,
+				929F6E7B1F3486300022C5C7 /* Storyboards */,
 				92EF39C01B081AEE00DC70BA /* Managers */,
 				920358FB1AFFD3C000B04710 /* Vendors */,
-				920358DB1AFFD30B00B04710 /* Images.xcassets */,
-				920358DD1AFFD30B00B04710 /* LaunchScreen.xib */,
-				920358CE1AFFD30B00B04710 /* Supporting Files */,
+				929F6E781F3485F90022C5C7 /* Resource */,
 			);
 			path = SpinBoxes;
-			sourceTree = "<group>";
-		};
-		920358CE1AFFD30B00B04710 /* Supporting Files */ = {
-			isa = PBXGroup;
-			children = (
-				9203590E1AFFDBE300B04710 /* PrefixHeader.pch */,
-				920358CF1AFFD30B00B04710 /* Info.plist */,
-				920358D01AFFD30B00B04710 /* main.m */,
-			);
-			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
 		920358E71AFFD30B00B04710 /* SpinBoxesTests */ = {
@@ -140,22 +128,11 @@
 		920358F51AFFD3B100B04710 /* ViewController */ = {
 			isa = PBXGroup;
 			children = (
-				920358F61AFFD3B100B04710 /* SpinTheBoxesView */,
+				929F6E6C1F3484E80022C5C7 /* SpinBoxesView */,
 				920358F81AFFD3B100B04710 /* ViewController.h */,
 				920358F91AFFD3B100B04710 /* ViewController.m */,
 			);
 			path = ViewController;
-			sourceTree = "<group>";
-		};
-		920358F61AFFD3B100B04710 /* SpinTheBoxesView */ = {
-			isa = PBXGroup;
-			children = (
-				92ADBB2E1B78D86A00C4B54D /* DynamicItem */,
-				920359131B0092A500B04710 /* BoxView */,
-				920359001AFFD3DD00B04710 /* SpinTheBoxesView.h */,
-				920359011AFFD3DD00B04710 /* SpinTheBoxesView.m */,
-			);
-			path = SpinTheBoxesView;
 			sourceTree = "<group>";
 		};
 		920358FB1AFFD3C000B04710 /* Vendors */ = {
@@ -174,15 +151,6 @@
 				920358FE1AFFD3C000B04710 /* UIView+Helpers.m */,
 			);
 			path = "UIView+Helpers";
-			sourceTree = "<group>";
-		};
-		920359131B0092A500B04710 /* BoxView */ = {
-			isa = PBXGroup;
-			children = (
-				920359141B0092A500B04710 /* BoxView.h */,
-				920359151B0092A500B04710 /* BoxView.m */,
-			);
-			path = BoxView;
 			sourceTree = "<group>";
 		};
 		920359181B0101F800B04710 /* block-kvo */ = {
@@ -219,13 +187,71 @@
 			path = ComputatingManager;
 			sourceTree = "<group>";
 		};
-		92ADBB2E1B78D86A00C4B54D /* DynamicItem */ = {
+		929F6E621F3483550022C5C7 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				92ADBB2F1B78D88900C4B54D /* DynamicItem.h */,
-				92ADBB301B78D88900C4B54D /* DynamicItem.m */,
+				929F6E631F3483550022C5C7 /* Info.plist */,
+				929F6E641F3483550022C5C7 /* main.m */,
+				929F6E651F3483550022C5C7 /* PrefixHeader.pch */,
+			);
+			name = "Supporting Files";
+			path = "SpinBoxes/Supporting Files";
+			sourceTree = "<group>";
+		};
+		929F6E681F3483630022C5C7 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				929F6E691F3483630022C5C7 /* AppDelegate.h */,
+				929F6E6A1F3483630022C5C7 /* AppDelegate.m */,
+			);
+			path = Application;
+			sourceTree = "<group>";
+		};
+		929F6E6C1F3484E80022C5C7 /* SpinBoxesView */ = {
+			isa = PBXGroup;
+			children = (
+				929F6E6D1F3484E80022C5C7 /* BoxView */,
+				929F6E701F3484E80022C5C7 /* DynamicItem */,
+				929F6E731F3484E80022C5C7 /* SpinBoxesView.h */,
+				929F6E741F3484E80022C5C7 /* SpinBoxesView.m */,
+			);
+			path = SpinBoxesView;
+			sourceTree = "<group>";
+		};
+		929F6E6D1F3484E80022C5C7 /* BoxView */ = {
+			isa = PBXGroup;
+			children = (
+				929F6E6E1F3484E80022C5C7 /* BoxView.h */,
+				929F6E6F1F3484E80022C5C7 /* BoxView.m */,
+			);
+			path = BoxView;
+			sourceTree = "<group>";
+		};
+		929F6E701F3484E80022C5C7 /* DynamicItem */ = {
+			isa = PBXGroup;
+			children = (
+				929F6E711F3484E80022C5C7 /* DynamicItem.h */,
+				929F6E721F3484E80022C5C7 /* DynamicItem.m */,
 			);
 			path = DynamicItem;
+			sourceTree = "<group>";
+		};
+		929F6E781F3485F90022C5C7 /* Resource */ = {
+			isa = PBXGroup;
+			children = (
+				929F6E791F3485F90022C5C7 /* Images.xcassets */,
+			);
+			path = Resource;
+			sourceTree = "<group>";
+		};
+		929F6E7B1F3486300022C5C7 /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				920358D81AFFD30B00B04710 /* Main.storyboard */,
+				920358DD1AFFD30B00B04710 /* LaunchScreen.xib */,
+			);
+			name = Storyboards;
+			path = Resource;
 			sourceTree = "<group>";
 		};
 		92EF39C01B081AEE00DC70BA /* Managers */ = {
@@ -262,7 +288,7 @@
 		920358C31AFFD30B00B04710 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0630;
+				LastUpgradeCheck = 0830;
 				ORGANIZATIONNAME = vaskov;
 				TargetAttributes = {
 					920358CA1AFFD30B00B04710 = {
@@ -293,9 +319,9 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				929F6E7A1F3485F90022C5C7 /* Images.xcassets in Resources */,
 				920358DA1AFFD30B00B04710 /* Main.storyboard in Resources */,
 				920358DF1AFFD30B00B04710 /* LaunchScreen.xib in Resources */,
-				920358DC1AFFD30B00B04710 /* Images.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -306,16 +332,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				920359161B0092A500B04710 /* BoxView.m in Sources */,
+				929F6E751F3484E80022C5C7 /* BoxView.m in Sources */,
+				929F6E6B1F3483630022C5C7 /* AppDelegate.m in Sources */,
+				929F6E771F3484E80022C5C7 /* SpinBoxesView.m in Sources */,
+				929F6E671F3483550022C5C7 /* main.m in Sources */,
+				929F6E761F3484E80022C5C7 /* DynamicItem.m in Sources */,
 				9277578A1B66D70600BA6A4F /* ComputatingManager.m in Sources */,
 				920359241B0101F800B04710 /* NSObject+MTKObserving.m in Sources */,
 				920358FA1AFFD3B100B04710 /* ViewController.m in Sources */,
-				920359021AFFD3DD00B04710 /* SpinTheBoxesView.m in Sources */,
-				920358D41AFFD30B00B04710 /* AppDelegate.m in Sources */,
-				92ADBB311B78D88900C4B54D /* DynamicItem.m in Sources */,
 				920359231B0101F800B04710 /* MTKObserver.m in Sources */,
 				920358FF1AFFD3C000B04710 /* UIView+Helpers.m in Sources */,
-				920358D11AFFD30B00B04710 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -328,6 +354,7 @@
 				920358D91AFFD30B00B04710 /* Base */,
 			);
 			name = Main.storyboard;
+			path = ..;
 			sourceTree = "<group>";
 		};
 		920358DD1AFFD30B00B04710 /* LaunchScreen.xib */ = {
@@ -336,6 +363,7 @@
 				920358DE1AFFD30B00B04710 /* Base */,
 			);
 			name = LaunchScreen.xib;
+			path = ..;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -354,14 +382,17 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -397,8 +428,10 @@
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -426,9 +459,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SpinBoxes/PrefixHeader.pch;
-				INFOPLIST_FILE = SpinBoxes/Info.plist;
+				GCC_PREFIX_HEADER = "SpinBoxes/Supporting Files/PrefixHeader.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SpinBoxes/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "home.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -438,9 +472,10 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = SpinBoxes/PrefixHeader.pch;
-				INFOPLIST_FILE = SpinBoxes/Info.plist;
+				GCC_PREFIX_HEADER = "SpinBoxes/Supporting Files/PrefixHeader.pch";
+				INFOPLIST_FILE = "$(SRCROOT)/SpinBoxes/Supporting Files/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "home.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;

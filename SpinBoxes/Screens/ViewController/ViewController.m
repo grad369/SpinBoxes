@@ -7,12 +7,12 @@
 //
 
 #import "ViewController.h"
-#import "SpinTheBoxesView.h"
+#import "SpinBoxesView.h"
 #import "BoxView.h"
 #import "UIView+Helpers.h"
 
-@interface ViewController ()<SpinTheBoxesViewDelegate>
-@property (weak, nonatomic) IBOutlet SpinTheBoxesView *spinTheBoxesView;
+@interface ViewController ()<SpinBoxesViewDelegate>
+@property (weak, nonatomic) IBOutlet SpinBoxesView *spinBoxesView;
 @property (weak, nonatomic) IBOutlet UILabel *label;
 @end
 
@@ -24,30 +24,30 @@
 {
     [super viewDidLoad];
     
-    _spinTheBoxesView.origin = CGPointMake(0, 50);
-    _spinTheBoxesView.delegate = self;
+    _spinBoxesView.origin = CGPointMake(0, 50);
+    _spinBoxesView.delegate = self;
     
-    _label.origin = CGPointMake(0, _spinTheBoxesView.bottom + 100);
+    _label.origin = CGPointMake(0, _spinBoxesView.bottom + 100);
     _label.size = CGSizeMake([UIScreen mainScreen].bounds.size.width, 100);
 }
 
-#pragma mark - |SpinTheBoxesViewDelegate|
+#pragma mark - |SpinBoxesViewDelegate|
 
-- (void)spinTheBoxesView:(SpinTheBoxesView *)view tapOnView:(BoxView *)boxView
+- (void)spinBoxesView:(SpinBoxesView *)view tapOnView:(BoxView *)boxView
 {
     _label.text = [NSString stringWithFormat:@"Tap #%@", boxView.titleText];
     
     [self hideText];
 }
 
-- (void)spinTheBoxesView:(SpinTheBoxesView *)view longPressBeginOnView:(BoxView *)boxView
+- (void)spinBoxesView:(SpinBoxesView *)view longPressBeginOnView:(BoxView *)boxView
 {
     _label.text = [NSString stringWithFormat:@"Longpress start #%@", boxView.titleText];
     
     [self hideText];
 }
 
-- (void)spinTheBoxesView:(SpinTheBoxesView *)view longPressEndedOnView:(BoxView *)boxView
+- (void)spinBoxesView:(SpinBoxesView *)view longPressEndedOnView:(BoxView *)boxView
 {
     _label.text = [NSString stringWithFormat:@"End Longpress #%@", boxView.titleText];
     

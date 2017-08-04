@@ -1,44 +1,42 @@
 //
-//  SpinTheBoxesView.m
+//  SpinBoxesView.m
 //  SpinBoxes
 //
 //  Created by vaskov on 10.05.15.
 //  Copyright (c) 2015 vaskov. All rights reserved.
 //
 
-#import "SpinTheBoxesView.h"
+#import "SpinBoxesView.h"
 #import "BoxView.h"
 #import "ComputatingManager.h"
 #import "DynamicItem.h"
 
-@interface SpinTheBoxesView() <UIDynamicAnimatorDelegate, BoxViewDelegate>
+@interface SpinBoxesView() <BoxViewDelegate>
 @property (nonatomic, assign) CGFloat angle;
+@property (nonatomic, assign) CGFloat startMovedAngle;
+@property (nonatomic, assign) BOOL animationRunning;
 
 @property (nonatomic, strong) IBOutlet UIView *centerBoxView;
 @property (nonatomic, strong) IBOutlet DynamicItem *dynamicItem;
 @property (nonatomic, strong) IBOutletCollection(BoxView) NSArray *boxViews;
-
-@property (nonatomic, strong) UIDynamicAnimator *animator;
-@property (nonatomic, assign) BOOL animationRunning;
-@property (nonatomic, assign) CGFloat startMovedAngle;
 @end
 
-@implementation SpinTheBoxesView
+@implementation SpinBoxesView
 
 #pragma mark - View Life
 
 - (void)dealloc
 {
-    NSLog(@"SpinTheBoxesView dealloc");
+    NSLog(@"SpinBoxesView dealloc");
 }
 
 - (void)awakeFromNib
 {
-    [super awakeFromNib];
+    __block SpinBoxesView *selfId = self;
     
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.0f * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
-        [self startPosition];
-        [self addDynamics];
+        [selfId startPosition];
+        [selfId.dynamicItem addDynamicsWithView:selfId];
     });
 }
 
@@ -51,15 +49,42 @@
     [[NSNotificationCenter defaultCenter] postNotification:notification];
 }
 
+#pragma mark - |DynamicItemDelegate|
+
+- (void)animatorDidPauseWithDynamicItem:(DynamicItem *)item
+{
+    _animationRunning = NO;
+}
+
 #pragma mark - |BoxViewDelegate|
 
 - (void)boxView:(BoxView *)view swipeWithVelocity:(CGPoint)velocity
 {
     _animationRunning = YES;
-    [_animator removeAllBehaviors];
     _dynamicItem.center = view.center;
-    [self setAttachmentBehavior];
-    [self addLinearVelocity:velocity];
+    [_dynamicItem removeAllBehaviors];
+    
+    __block SpinBoxesView *selfId = self;
+    
+    [_dynamicItem addLinearVelocity:velocity actionDynamicItemBehavior:^
+    {
+        if (selfId.animationRunning)
+        {
+            DynamicItem *dynamicItem = selfId.dynamicItem;
+            
+            CGPoint center = CGPointMake(dynamicItem.centerX, dynamicItem.centerY);
+            CGFloat currentAngle = [COMPUTATION_MANAGER alphaInDegreesForBoxWithPoint:center];
+            selfId.angle = [COMPUTATION_MANAGER resetAngle:(currentAngle + selfId.startMovedAngle)];
+            
+            BOOL clockwise = [COMPUTATION_MANAGER isClockwiseWithAlpha:selfId.angle];
+            CGPoint velocity =  dynamicItem.velocity;
+            
+            if (ABS(velocity.x) + ABS(velocity.y) < 35) {
+                [selfId moveToFinishPositionWithClockwise:clockwise];
+                [dynamicItem removeAllBehaviors];
+            }
+        }
+    }];
 }
 
 - (void)touchesBeginOnBoxView:(BoxView *)view tapPointInSuperview:(CGPoint)point
@@ -67,22 +92,20 @@
     if (_animationRunning)
     {
         _animationRunning = NO;
-        [_animator removeAllBehaviors];
-        [self setAttachmentBehavior];
+        [_dynamicItem removeAllBehaviors];
     }
     
     _startMovedAngle = _angle - [COMPUTATION_MANAGER alphaInDegreesForBoxWithPoint:point];
     
     if (_delegate != nil)
-        [_delegate spinTheBoxesView:self tapOnView:view];
+        [_delegate spinBoxesView:self tapOnView:view];
 }
 
 - (void)touchesMovedOnBoxView:(BoxView *)view tapPointInSuperview:(CGPoint)point
 {
     _dynamicItem.center = view.center;
     CGFloat angleBoxView = [COMPUTATION_MANAGER alphaInDegreesForBoxWithPoint:point];
-    CGFloat alpha = (angleBoxView + _startMovedAngle);
-    self.angle = [COMPUTATION_MANAGER resetAngle:alpha];
+    self.angle = [COMPUTATION_MANAGER resetAngle:(angleBoxView + _startMovedAngle)];
 }
 
 - (void)touchesEndedOnBoxView:(BoxView *)view
@@ -93,29 +116,15 @@
 - (void)longPressBeginOnBoxView:(BoxView *)view
 {
     if (_delegate != nil)
-        [_delegate spinTheBoxesView:self longPressBeginOnView:view];
+        [_delegate spinBoxesView:self longPressBeginOnView:view];
 }
 
 - (void)longPressEndedOnBoxView:(BoxView *)view
 {
     if (_delegate != nil)
-        [_delegate spinTheBoxesView:self longPressEndedOnView:view];
+        [_delegate spinBoxesView:self longPressEndedOnView:view];
     
     [self moveToNearestPositionFrom:view.center];
-}
-
-#pragma mark - |UIDynamicAnimatorDelegate|
-
-- (void)dynamicAnimatorWillResume:(UIDynamicAnimator*)animator
-{
-    NSLog(@"===%@1", animator);
-}
-
-- (void)dynamicAnimatorDidPause:(UIDynamicAnimator*)animator
-{
-    _animationRunning = NO;
-    
-    NSLog(@"===%@2", animator);
 }
 
 #pragma mark - Privates
@@ -144,59 +153,6 @@
     _dynamicItem.frame = ((BoxView *)_boxViews[0]).frame;
 }
 
-- (void)addDynamics
-{
-    self.animator = [[UIDynamicAnimator alloc] initWithReferenceView:self];
-    self.animator.delegate = self;
-    [self setAttachmentBehavior];
-}
-
-- (void)setAttachmentBehavior
-{
-    CGPoint attachmentPoint = CGPointMake(self.width/2, self.height/2);
-    
-    UIDynamicItemBehavior *item = [[UIDynamicItemBehavior alloc] initWithItems:@[_dynamicItem]];
-    item.allowsRotation = NO;
-    
-    UIAttachmentBehavior *attachmentBehavior = [[UIAttachmentBehavior alloc] initWithItem:_dynamicItem attachedToAnchor:attachmentPoint];
-    attachmentBehavior.frequency = 10;
-    attachmentBehavior.damping = 2.5;
-    [attachmentBehavior addChildBehavior:item];
-    
-    [_animator addBehavior:attachmentBehavior];
-}
-
-- (void)addLinearVelocity:(CGPoint)velocity
-{
-    __block SpinTheBoxesView *selfId = self;
-    
-    UIDynamicItemBehavior *item = [[UIDynamicItemBehavior alloc] initWithItems:@[_dynamicItem]];
-    [item addLinearVelocity:velocity forItem:_dynamicItem];
-    item.density = 500;
-    item.friction = 500;
-    item.action = ^
-    {
-        if (selfId.animationRunning) {
-            CGPoint center = CGPointMake(_dynamicItem.centerX, _dynamicItem.centerY);
-            CGFloat currentAngle = [COMPUTATION_MANAGER alphaInDegreesForBoxWithPoint:center];
-            self.angle = [COMPUTATION_MANAGER resetAngle:(currentAngle + _startMovedAngle)];
-            
-            BOOL clockwise = [COMPUTATION_MANAGER isClockwiseWithAlpha:_angle];
-            CGPoint velocity = [_dynamicItem.linearVelocityBehavior linearVelocityForItem:_dynamicItem];
-            
-            if (ABS(velocity.x) + ABS(velocity.y) < 35) {
-                [selfId moveToFinishPositionWithClockwise:clockwise];
-                [_animator removeAllBehaviors];
-                [self setAttachmentBehavior];
-            }
-        }
-    };
-    
-    [_animator updateItemUsingCurrentState:_dynamicItem];
-    [_animator addBehavior:item];
-    _dynamicItem.linearVelocityBehavior = item;
-}
-
 - (void)moveToNearestPositionFrom:(CGPoint)centerOfBoxView
 {
     CGFloat angleBoxView = [COMPUTATION_MANAGER alphaInDegreesForBoxWithPoint:centerOfBoxView];
@@ -222,9 +178,10 @@
     
     CGFloat durationAnimation = deltaAngle / 10.0f;
     
+    
     [UIView animateWithDuration:durationAnimation
                           delay:0.0f
-                        options:UIViewAnimationOptionBeginFromCurrentState
+                        options:UIViewAnimationOptionBeginFromCurrentState | UIViewAnimationOptionCurveEaseOut
                      animations:^
      {
          self.angle = nearestAngleCenterOfBoxView;
